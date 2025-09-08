@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Variables", "Variables\Vari
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loops", "Loops\Loops.csproj", "{7D589A17-4179-45DB-80D1-069DC966455A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexing", "Indexing\Indexing.csproj", "{9969227A-D703-44CA-98A7-E3D97BD4A030}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7D589A17-4179-45DB-80D1-069DC966455A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D589A17-4179-45DB-80D1-069DC966455A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D589A17-4179-45DB-80D1-069DC966455A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9969227A-D703-44CA-98A7-E3D97BD4A030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9969227A-D703-44CA-98A7-E3D97BD4A030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9969227A-D703-44CA-98A7-E3D97BD4A030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9969227A-D703-44CA-98A7-E3D97BD4A030}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

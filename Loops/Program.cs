@@ -71,6 +71,9 @@
                     case 14:
                         GuessTheNumber();
                         break;
+                    case 15:
+                        RockPaperScissors();
+                        break;
                     default:
                         Console.WriteLine("Invalid selection. Try again.");
                         break;
@@ -420,12 +423,11 @@
             Console.WriteLine($"The computer will guess the secret number: {secretNumber}"); 
 
             int computerChoice = rand.Next(1, 100);
-            int highest = 100;
-            int lowest = 0;
-            int highestGuess =computerChoice;
-            int lowestGuess = 0;
+            int highestGuess = computerChoice;
+            int lowestGuess = computerChoice;
+            int highestPossible = 100;
+            int lowestPossible = 1;
 
-            int newChoice = computerChoice;
             Console.WriteLine($"My first guess will be {computerChoice}");
 
             while (true)
@@ -439,37 +441,99 @@
                 if (computerChoice > secretNumber)
                 {
                     Console.WriteLine("Too high!");
-                    if (highestGuess > computerChoice)
+                    if (highestPossible >= computerChoice)
                     {
-                        highestGuess = computerChoice;
+                        highestPossible = computerChoice;
+                        if (highestPossible < highestGuess)
+                        {
+                            highestGuess = highestPossible;
+                        }
+                        computerChoice = rand.Next(lowestPossible, highestPossible);
                     }
-
-                    newChoice = rand.Next(lowestGuess, highestGuess);
-                    if (newChoice >= computerChoice)
+                    else
                     {
-                        newChoice = rand.Next(lowestGuess, highestGuess);
+                        computerChoice = rand.Next(lowestGuess, highestPossible);
                     }
-                    computerChoice = newChoice;
-                    Console.WriteLine($"Thinking... too high, lets go with {computerChoice}");
+                        
+                    Console.WriteLine($"New choice: {computerChoice}");
                 }
-                
-                else if (computerChoice < secretNumber)
+                else
                 {
                     Console.WriteLine("Too low!");
-                    if (lowestGuess > computerChoice)
+                    if (lowestPossible <= computerChoice)
                     {
-                        lowestGuess = computerChoice;
+                        lowestPossible = computerChoice;
+                        if (lowestGuess > lowestPossible) {
+                            lowestGuess = lowestPossible;
+                        }
+                        computerChoice = rand.Next(lowestPossible, highestPossible);
                     }
-                    newChoice = rand.Next(lowestGuess, highestGuess);
-                    if (newChoice >= computerChoice)
-                    {
-                        newChoice = rand.Next(lowestGuess, highestGuess);
+                    else { 
+                        computerChoice = rand.Next(lowestPossible, highestGuess);
                     }
-                   
-                    computerChoice = newChoice;
-                    Console.WriteLine($"Thinking... too low, lets go with {computerChoice}");
+
+
+                    Console.WriteLine($"New choice: {computerChoice}");
+
                 }
             }
+        }
+        static void RockPaperScissors() 
+        {  
+            Dictionary<string, string> winCons = new Dictionary<string, string>();
+            string rockWins = "scissors";
+            string scissorsWins = "paper";
+            string paperWins = "rock";
+
+            Dictionary<string, string> loseCons = new Dictionary<string, string>();
+            string paperLoses = "scissors";
+            string scissorsLoses = "rock";
+            string rockLoses = "paper";
+
+            winCons["rock"] = rockWins;
+            winCons["scissors"] = scissorsWins;
+            winCons["paper"] = paperWins;
+
+            //loseCons["rock"] = rockLoses;
+            //loseCons["scissors"] = scissorsLoses;
+            //loseCons["paper"] = paperLoses;
+
+        
+            Console.WriteLine("Write 'Rock', 'Paper' or 'Scissors'");
+            string userSelection = Console.ReadLine().ToLower();
+            List<string> options = new List<string> { "rock", "paper", "scissors" };
+            var rand = new Random();
+                           
+            while (userSelection.Length != 0) 
+            {
+                string computerSelection = options[rand.Next(0, 2)];
+                 
+                if (userSelection == computerSelection)
+                {
+                    Console.WriteLine($"Player: {userSelection}\nComputer: {computerSelection}");
+                    Console.WriteLine("EQUAL! Try again!");
+                    computerSelection = options[rand.Next(0, 2)];
+                    Console.WriteLine("Select a new one, now:");
+                    userSelection = Console.ReadLine().ToLower();
+                    
+                }
+                if (winCons[userSelection] == computerSelection) 
+                {
+                    Console.WriteLine($"User wins! User had: {userSelection}, Computer had: {computerSelection}");
+                    Console.WriteLine("Play again? Chooose your battlestance again. Rock paper or scissors");
+                    userSelection = Console.ReadLine().ToLower();
+
+                    
+                }
+                if (winCons[computerSelection] == userSelection)
+                { 
+                    Console.WriteLine($"Computer wins! User had: {userSelection}, Computer had: {computerSelection}");
+                    Console.WriteLine("Play again? Chooose your battlestance again. Rock paper or scissors");
+                    userSelection = Console.ReadLine().ToLower();
+                }
+
+            }
+           
         }
     }
 }
