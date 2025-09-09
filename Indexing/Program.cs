@@ -231,8 +231,43 @@
                 }
                 
             }
-            static void ReverseOrder(string letters) 
+            static void ReverseOrder() 
             {
+
+                string[] userTotalInput = new string[7];
+                int totalInputs = 0;
+                int stopAt = 7;
+                Console.WriteLine("Write a total of 7 things, and I will print the items in reverse order I got them. ");
+                while (totalInputs != 7)
+                {
+                    Console.WriteLine($"Write {stopAt - totalInputs } more inputs please. (write the letter q to quit.)");
+                    string userInput = Console.ReadLine();
+                    if (userInput == "q")
+                    {
+                        Console.WriteLine("\n----------\nDecided to quit, huh? If not: Try again and do not write just the letter 'q' as you will quit then.");
+                        break;
+                    }
+                    if (userInput.Length != 0 && userInput != "q")
+                    {
+                        userTotalInput[totalInputs] = userInput;
+                        totalInputs += 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You did not seem to insert anything...");
+                        
+                    }                   
+                }
+                
+                if (totalInputs == 7)
+                {
+                    Console.WriteLine("\n----------\nHere are your items in reversed order! Fun.");
+                    for (int i = userTotalInput.Length -1; i >= 0; i--)
+                    {
+                        Console.WriteLine(userTotalInput[i]);
+                    }
+
+                }
                 
 
 
