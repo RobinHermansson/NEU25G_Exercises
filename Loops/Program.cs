@@ -485,6 +485,11 @@
             string scissorsWins = "paper";
             string paperWins = "rock";
 
+            Dictionary<string, string> loseCons = new Dictionary<string, string>();
+            string paperLoses = "scissors";
+            string scissorsLoses = "rock";
+            string rockLoses = "paper";
+
             winCons["rock"] = rockWins;
             winCons["scissors"] = scissorsWins;
             winCons["paper"] = paperWins;
