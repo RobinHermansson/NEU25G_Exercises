@@ -35,13 +35,28 @@
                         Console.WriteLine(PrintNameAsReturnValue("Robin Hermansson"));
                         break;
                     case 3:
-                        //StringLengthLongerThanX();
+                        Console.Write("Give me a string and then give me a number and I'll check if the string is longer than your given number.\nLets start with the string: ");
+                        string stringToCheck = Console.ReadLine();
+                        Console.Write("Now the number: ");
+                        int lengthToCheck = int.Parse(Console.ReadLine());
+                        if (StringLengthLongerThanX(stringToCheck, lengthToCheck))
+                        {
+                            Console.WriteLine("Its longer!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("It's shorter!");
+                        }
+                            ;
                         break;
                     case 4:
-                        //CelsiusToFarenheit();
+                        double value = 35.0;
+                        double result = CelsiusToFarenheit(value);
+                        Console.WriteLine($"the Celcius value of {value} is {result} in Farenheit.");
                         break;
                     case 5:
-                        //AddDashesToInput();
+                        string dashesResult = AddDashesToInput("teststring");
+                        Console.WriteLine(dashesResult);
                         break;
                     case 6:
                         //SelfMadeStringJoin();
@@ -86,6 +101,41 @@
         static string PrintNameAsReturnValue(string userInput)
         {
             return $"{userInput}";
+        }
+
+        static bool StringLengthLongerThanX(string stringToCheck, int lengthToCheck)
+        {
+            bool result = false;
+
+            if (stringToCheck.Length > lengthToCheck)
+            {
+                return result;
+            }
+            return result;
+
+        }
+
+        static double CelsiusToFarenheit(double value)
+        {           
+            return (value*1.8) + 32;
+        }
+
+        static string AddDashesToInput(string inputString)
+        {
+            string finalResult = string.Empty;
+
+            for (int i = 0; i < inputString.Length; i++)
+            {
+                if (i == 0)
+                {
+                    finalResult += inputString[i];
+                }
+                else
+                {
+                    finalResult += $"-{inputString[i]}";
+                }
+            }
+            return finalResult;
         }
     }
 }
