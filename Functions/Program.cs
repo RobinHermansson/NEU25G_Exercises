@@ -9,7 +9,7 @@
                 Console.WriteLine("=================================================\n" +
                    "\nHello, select a number from the below list: \n" +
                    "\n1. Print the name 'Robin Hermansson'" +
-                   "\n2. Insert your name and it will be printed" +
+                   "\n2. Prints the name (as a return value)" +
                    "\n3. Insert a string and then a value, checks if the string is as long as the inserted value." +
                    "\n4. Convert Celsius to Fahrenheit" +
                    "\n5. Add a dash (-) between each letter inserted" +
@@ -32,7 +32,7 @@
                         PrintName("Robin", "Hermansson");
                         break;
                     case 2:
-                        //PrintNameWithReturnValue();
+                        Console.WriteLine(PrintNameAsReturnValue("Robin Hermansson"));
                         break;
                     case 3:
                         //StringLengthLongerThanX();
@@ -81,6 +81,11 @@
         static void PrintName(string firstName, string lastName)
         {
             Console.WriteLine($"{firstName} {lastName}");
+        }
+
+        static string PrintNameAsReturnValue(string userInput)
+        {
+            return $"{userInput}";
         }
     }
 }
