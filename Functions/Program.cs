@@ -59,7 +59,8 @@
                         Console.WriteLine(dashesResult);
                         break;
                     case 6:
-                        //SelfMadeStringJoin();
+                        string stringJoinResult = SelfMadeStringJoin("->", "test", "Another string", "One more", "last one.");
+                        Console.WriteLine(stringJoinResult);
                         break;
                     case 7:
                         //CalcMedianvalue();
@@ -133,6 +134,24 @@
                 else
                 {
                     finalResult += $"-{inputString[i]}";
+                }
+            }
+            return finalResult;
+        }
+
+        static string SelfMadeStringJoin(string separator, params string[] inputArray)
+        {
+            string finalResult = string.Empty;
+
+            for (int i = 0; i < inputArray.Length; i++)
+            {
+                if (i == 0)
+                {
+                    finalResult += inputArray[i];
+                }
+                else
+                {
+                    finalResult += $"{separator}{inputArray[i]}";
                 }
             }
             return finalResult;
