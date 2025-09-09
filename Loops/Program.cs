@@ -494,42 +494,37 @@
             winCons["scissors"] = scissorsWins;
             winCons["paper"] = paperWins;
 
-            //loseCons["rock"] = rockLoses;
-            //loseCons["scissors"] = scissorsLoses;
-            //loseCons["paper"] = paperLoses;
-
-        
-            Console.WriteLine("Write 'Rock', 'Paper' or 'Scissors'");
-            string userSelection = Console.ReadLine().ToLower();
+            string userSelection = "";
             List<string> options = new List<string> { "rock", "paper", "scissors" };
             var rand = new Random();
                            
-            while (userSelection.Length != 0) 
+            while (true) 
             {
+                Console.WriteLine("Write 'Rock', 'Paper' or 'Scissors'");
                 string computerSelection = options[rand.Next(0, 2)];
+                userSelection = Console.ReadLine().ToLower();
+
+                if (userSelection.Length == 0)
+                {
+                    break;
+                }
                  
                 if (userSelection == computerSelection)
                 {
                     Console.WriteLine($"Player: {userSelection}\nComputer: {computerSelection}");
                     Console.WriteLine("EQUAL! Try again!");
-                    computerSelection = options[rand.Next(0, 2)];
-                    Console.WriteLine("Select a new one, now:");
-                    userSelection = Console.ReadLine().ToLower();
                     
                 }
                 if (winCons[userSelection] == computerSelection) 
                 {
                     Console.WriteLine($"User wins! User had: {userSelection}, Computer had: {computerSelection}");
-                    Console.WriteLine("Play again? Chooose your battlestance again. Rock paper or scissors");
-                    userSelection = Console.ReadLine().ToLower();
-
+                    Console.WriteLine("Play again? Chooose your battlestance again or press Enter to quit.");
                     
                 }
                 if (winCons[computerSelection] == userSelection)
                 { 
                     Console.WriteLine($"Computer wins! User had: {userSelection}, Computer had: {computerSelection}");
-                    Console.WriteLine("Play again? Chooose your battlestance again. Rock paper or scissors");
-                    userSelection = Console.ReadLine().ToLower();
+                    Console.WriteLine("Play again? Chooose your battlestance again or press Enter to quit.");
                 }
 
             }
