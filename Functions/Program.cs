@@ -1,4 +1,6 @@
-﻿namespace Functions
+﻿using System.Transactions;
+
+namespace Functions
 {
     internal class Program
     {
@@ -14,7 +16,7 @@
                    "\n4. Convert Celsius to Fahrenheit" +
                    "\n5. Add a dash (-) between each letter inserted" +
                    "\n6. Will join each word with a ->" +
-                   "\n7. Calculates the median value of the inserted integers" +
+                   "\n7. Calculates the average value of the inserted integers" +
                    "\n8. Takes a numbers and returns the text version of those numbers" +
                    "\n9. Takes a full number value (up to the 9999) and converts it to string representation" +
                    "\n10. Finds the index of a given character and returns it (the first occurrence)" +
@@ -63,7 +65,8 @@
                         Console.WriteLine(stringJoinResult);
                         break;
                     case 7:
-                        //CalcMedianvalue();
+                        double averageValue = CalcAverageValue(5, 31, 403, 34444, 299);
+                        Console.WriteLine($"Here is the average value of your inserted values: {averageValue}");
                         break;
                     case 8:
                         //NumbersToText();
@@ -155,6 +158,17 @@
                 }
             }
             return finalResult;
+        }
+
+        static double CalcAverageValue(params int[] inValues)
+        {
+            double sum = 0.0;
+            for (int i = 0; i < inValues.Length; i++)
+            {
+                sum += inValues[i];
+            }
+            double result = (sum / inValues.Length);
+            return result;
         }
     }
 }
