@@ -69,7 +69,8 @@ namespace Functions
                         Console.WriteLine($"Here is the average value of your inserted values: {averageValue}");
                         break;
                     case 8:
-                        //NumbersToText();
+                        string[] numbersAsText = NumbersToText(123459);
+                        Console.WriteLine($"Here is your digits as a string array and in text: {string.Join(", ", numbersAsText)}");
                         break;
                     case 9:
                         //FullNumbersToText();
@@ -168,6 +169,49 @@ namespace Functions
                 sum += inValues[i];
             }
             double result = (sum / inValues.Length);
+            return result;
+        }
+
+        static string[] NumbersToText(int numbersToConvert)
+        {
+            string allNumbersAsString = numbersToConvert.ToString();
+            string[] result = new string[allNumbersAsString.Length];
+
+            for (int i = 0; i < allNumbersAsString.Length; i++)
+            {
+                
+                switch (allNumbersAsString[i])
+                {
+                    case '1':
+                        result[i] = "one";
+                        break;
+                    case '2':
+                        result[i] = "two";
+                        break;
+                    case '3':
+                        result[i] = "three";
+                        break;
+                    case '4':
+                        result[i] = "four";
+                        break;
+                    case '5':
+                        result[i] = "five";
+                        break;
+                    case '6':
+                        result[i] = "six";
+                        break;
+                    case '7':
+                        result[i] = "seven";
+                        break;
+                    case '8':
+                        result[i] = "eight";
+                        break;
+                    case '9':
+                        result[i] = "nine";
+                        break;
+
+                }
+            }
             return result;
         }
     }
