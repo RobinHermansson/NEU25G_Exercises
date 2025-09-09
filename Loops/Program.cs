@@ -510,16 +510,20 @@
                     Console.WriteLine("EQUAL! Try again!");
                     
                 }
-                if (winCons[userSelection] == computerSelection) 
+                else if (winCons[userSelection] == computerSelection) 
                 {
                     Console.WriteLine($"User wins! User had: {userSelection}, Computer had: {computerSelection}");
                     Console.WriteLine("Play again? Chooose your battlestance again or press Enter to quit.");
                     
                 }
-                if (winCons[computerSelection] == userSelection)
+                else if (winCons[computerSelection] == userSelection)
                 { 
                     Console.WriteLine($"Computer wins! User had: {userSelection}, Computer had: {computerSelection}");
                     Console.WriteLine("Play again? Chooose your battlestance again or press Enter to quit.");
+                }
+                else
+                {
+                    Console.WriteLine("What you wrote as input is not either 'Paper', 'Rock' or 'Scissors'. Try again.");
                 }
 
             }

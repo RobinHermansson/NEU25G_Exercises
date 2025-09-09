@@ -42,8 +42,10 @@
                         PalindromOrNot();
                         break;
                     case 6:
+                        Calculator();
                         break;
                     case 7:
+                        ReverseOrder();
                         break;
                     case 8:
                         break;
@@ -162,12 +164,77 @@
 
 
             }
-            static void Calculator(string letters) 
-            { 
+            static void Calculator() 
+            {
+                Console.WriteLine("Please give me a calculation to perform, on one line, e.g. '34 + 49'");
+                string userInput = Console.ReadLine();
 
+                
+                int firstNumbers;
+                int secondNumbers;
+                string firstNumbersAsString = string.Empty;
+                string secondNumbersAsString = string.Empty;
+                char operatorType = ' ';
+                int finalResult = -1;
+
+                List<char> allowedOperators = ['-', '+', '*', '/'];
+
+                //Will loop through each character in the string to discern the type, instead of splitting it on each space
+                //in order to learn this 'proper'.
+                for (int i = 0; i < userInput.Length; i++)
+                { 
+                
+                    if (userInput[i] != ' ' || allowedOperators.Contains(userInput[i]))
+                    {
+                        if (allowedOperators.Contains(userInput[i]))
+                        {
+                            operatorType = userInput[i];
+                        }
+                        if (operatorType == ' ' && !allowedOperators.Contains(userInput[i]))
+                        {
+                            firstNumbersAsString += userInput[i]; 
+                        }
+                        else if (operatorType != ' ' && !allowedOperators.Contains(userInput[i]))
+                        {
+                            secondNumbersAsString += userInput[i];
+                        }
+                    }
+                }
+
+                int.TryParse(firstNumbersAsString, out firstNumbers);
+                int.TryParse(secondNumbersAsString, out secondNumbers);
+
+                if (operatorType == '+')
+                {
+                    finalResult = firstNumbers + secondNumbers;
+
+                }
+                else if (operatorType == '-')
+                {
+                    finalResult = firstNumbers - secondNumbers;
+                }
+                else if (operatorType == '*')
+                {
+                    finalResult = firstNumbers * secondNumbers;
+                }
+                else if (operatorType == '/')
+                {
+                    finalResult = firstNumbers / secondNumbers;
+                }
+                else
+                {
+                    Console.WriteLine("Could not decipher what kind of Operator you wanted to use... try any of these: +-*/");
+                }
+                if (finalResult != -1)
+                {
+                    Console.WriteLine($"{firstNumbers} {operatorType} {secondNumbers} = {finalResult}");
+                }
+                
             }
             static void ReverseOrder(string letters) 
-            { 
+            {
+                
+
 
             }
             static void DelayedPrintout(string letters) 
