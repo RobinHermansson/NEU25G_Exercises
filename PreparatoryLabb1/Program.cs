@@ -175,7 +175,39 @@
         {
             // Exercise goal:
             // Start with the string "Hello world". Print letter by letter. If two characters in a row are the same, these should be green. Other letters are white/gray.
-                  
+            string exerciseString = "Hello world! test with longer string with two letters.";
+
+            for (int i = 0; i < exerciseString.Length; i++)
+            {
+                char nextChar = ' ';
+                char prevChar = ' ';
+                if (i != exerciseString.Length -1) 
+                {
+                    nextChar = exerciseString[i+1];
+                }
+                if (i != 0)
+                {
+                    prevChar = exerciseString[i - 1];
+                }
+                if (nextChar == exerciseString[i])
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(exerciseString[i]);
+                    Console.ResetColor();
+                    
+                }
+                else if (prevChar == exerciseString[i])
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(exerciseString[i]);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.Write(exerciseString[i]);
+                }
+            }
+            Console.WriteLine();        
         }
 
         static void LetterByLetterGreenSubstring() 
