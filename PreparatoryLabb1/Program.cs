@@ -212,10 +212,67 @@
 
         static void LetterByLetterGreenSubstring() 
         {
-           // Exercise goal:
-           // Start with the string "How much wood would a woodchuck chuck if a woodchuck could chuck wood?", and the smaller string "oo". Print out the long string letter by letter.
-           // Every time the smaller string occurs (two 'o's in a row), these should be green. Other letters are white/gray.
-        }
+            // Exercise goal:
+            // Start with the string "How much wood would a woodchuck chuck if a woodchuck could chuck wood?", and the smaller string "oo". Print out the long string letter by letter.
+            // Every time the smaller string occurs (two 'o's in a row), these should be green. Other letters are white/gray.
+
+            string exerciseString = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?";
+            string makeThisPatternGreen = "oo";
+            bool makeGreen = true;
+            int skipPrint = 0;
+            
+            for (int i = 0; i < exerciseString.Length; i++)
+            {
+                Console.ResetColor();
+                char nextChar = ' ';
+                char prevChar = ' ';
+                if (i != exerciseString.Length - 1)
+                {
+                    nextChar = exerciseString[i + 1];
+                }
+                if (i != 0)
+                {
+                    prevChar = exerciseString[i - 1];
+                }
+                makeGreen = false;
+                for (int y = 0; y < makeThisPatternGreen.Length; y++)
+                {
+                    if (i != exerciseString.Length - 1 || i != i + makeThisPatternGreen.Length)
+                    {
+                        if (exerciseString[i + y] != makeThisPatternGreen[y])
+                        {
+                            makeGreen = false;
+                            break;
+                        }
+                        else
+                        {
+                            makeGreen = true;
+                        }
+                    }
+                }
+                if (makeGreen)
+                {
+                    skipPrint = makeThisPatternGreen.Length;
+                }
+                if (makeGreen && skipPrint != 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(exerciseString[i]);
+                    skipPrint -= 1;
+                    if (skipPrint == 0)
+                    {
+                        makeGreen = false;
+                        Console.ResetColor();
+                    }
+                    continue;
+                }
+                else
+                {
+                    Console.Write(exerciseString[i]);
+                }
+                }
+                Console.WriteLine();
+            }
         static void LetterByLetterGreenSubstring2() 
         {
             // Exercise goal:
