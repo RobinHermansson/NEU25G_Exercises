@@ -87,6 +87,19 @@
         {
             // Exercise goal:
             // Start with the string (create a variable with) "Hello World!", print out the entire string letter by letter, but stop when there's a space. (So it should only print "Hello").
+
+            string helloWorld = "Hello World!";
+
+            for (int i = 0; i < helloWorld.Length; i++)
+            {
+                if (helloWorld[i] == ' ')
+                {
+                    break;
+                }
+                Console.Write(helloWorld[i]);
+            }
+            Console.WriteLine();
+
         }
 
         static void LetterByLetterLineBreakOnSpace()
