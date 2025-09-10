@@ -247,12 +247,9 @@
                         else
                         {
                             makeGreen = true;
+                           skipPrint = makeThisPatternGreen.Length;
                         }
                     }
-                }
-                if (makeGreen)
-                {
-                    skipPrint = makeThisPatternGreen.Length;
                 }
                 if (makeGreen && skipPrint != 0)
                 {
@@ -264,7 +261,7 @@
                         makeGreen = false;
                         Console.ResetColor();
                     }
-                    continue;
+                    //continue;
                 }
                 else
                 {
