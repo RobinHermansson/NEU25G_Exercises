@@ -126,6 +126,19 @@
         {
             // Exercise goal:
             // Start with the string "This is exercise 3". Print letter by letter. But if the index is an even number, print * instead.
+            string exerciseString = "This is exercise 3";
+            for (int i = 0; i < exerciseString.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.Write("*");
+                }
+                else
+                {
+                    Console.Write(exerciseString[i]);
+                }
+            }
+            Console.WriteLine();
         }
 
         static void LetterByLetterGreenOsRedLs()
