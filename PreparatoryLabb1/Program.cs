@@ -145,12 +145,37 @@
         {
             // Exercise goal:
             // Start with the string "Hello world!". Print letter by letter. All 'o's should be green, all 'l's should be red. Other letters are white/gray.
+
+            string exerciseString = "Hello world!";
+            for (int i = 0; i < exerciseString.Length; i++)
+            {
+                if (exerciseString[i] == 'o')
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(exerciseString[i]);
+                    Console.ResetColor();
+                    
+                }
+                else if (exerciseString[i] == 'l')
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(exerciseString[i]);
+                    Console.ResetColor();
+                    
+                }
+                else
+                {
+                    Console.Write(exerciseString[i]);
+                }
+            }
+            Console.WriteLine();
         }
 
         static void LetterByLetterDoublesInGreen()
         {
             // Exercise goal:
             // Start with the string "Hello world". Print letter by letter. If two characters in a row are the same, these should be green. Other letters are white/gray.
+                  
         }
 
         static void LetterByLetterGreenSubstring() 
