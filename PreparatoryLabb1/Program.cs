@@ -106,6 +106,20 @@
         {
             //  Exercise goal:
             // Start with the string "This is just some other text". Print out the string letter by letter, but when there's a space, make a line break instead. (You should get one word per line).
+
+            string exerciseString = "This is just some other text";
+            for (int i = 0; i < exerciseString.Length; i++)
+            {
+                if (exerciseString[i] == ' ')
+                {
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.Write(exerciseString[i]);
+                }
+            }
+            Console.WriteLine();
         }
 
         static void LetterByLetterEveryOtherStar()
