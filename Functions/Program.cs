@@ -73,8 +73,8 @@ namespace Functions
                         Console.WriteLine($"Here is your digits as a string array and in text: {string.Join(", ", numbersAsText)}");
                         break;
                     case 9:
-                        string reuslt = FullNumbersToText(9999);
-                        Console.WriteLine(result);
+                        string fullNumbersResult = FullNumbersToText(9999);
+                        Console.WriteLine(fullNumbersResult);
                         break;
                     case 10:
                         //FindIndexOf();
