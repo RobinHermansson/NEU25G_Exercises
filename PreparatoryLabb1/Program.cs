@@ -237,7 +237,7 @@
                         Console.ResetColor();
                     }
                 }
-                Console.Write();
+                Console.Write(exerciseString[i]);
                 //char nextChar = ' ';
                 //char prevChar = ' ';
                 //if (i != exerciseString.Length - 1)

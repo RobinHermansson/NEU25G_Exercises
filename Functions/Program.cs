@@ -73,7 +73,8 @@ namespace Functions
                         Console.WriteLine($"Here is your digits as a string array and in text: {string.Join(", ", numbersAsText)}");
                         break;
                     case 9:
-                        //FullNumbersToText();
+                        string reuslt = FullNumbersToText(9999);
+                        Console.WriteLine(result);
                         break;
                     case 10:
                         //FindIndexOf();
@@ -213,6 +214,186 @@ namespace Functions
                 }
             }
             return result;
+        }
+        static string FullNumbersToText(int number)
+        {
+            string result = string.Empty;
+
+            string entireNumberAsString = number.ToString();
+
+            
+            if (entireNumberAsString.Length == 4)
+            {
+
+            }
+            if (entireNumberAsString.Length == 3)
+            {
+
+            }
+            if (entireNumberAsString.Length == 2)
+            {
+
+            }
+            if (entireNumberAsString.Length == 1)
+            {
+
+            }
+
+            static string Handle1to9(char character)
+            {
+                switch (character)
+                {
+                    case '1':
+                        return "one";
+                    case '2':
+                        return "two";
+                    case '3':
+                        return "three";
+                    case '4':
+                        return "four";
+                    case '5':
+                        return "five";
+                    case '6':
+                        return "six";
+                    case '7':
+                        return "seven";
+                    case '8':
+                        return "eight";
+                    case '9':
+                        return "nine";
+                    default:
+                        return "";
+
+                }
+               
+            }
+
+            static string Handle10s(string number)
+            {
+                if (number[0] == '1')
+                {
+                    switch (number)
+                    {
+                        case "10":
+                            return "ten";
+                        case "11":
+                            return "eleven";
+                        case "12":
+                            return "twelve";
+                        case "13":
+                            return "thirteen";
+                        case "14":
+                            return "fourteen";
+                        case "15":
+                            return "fifteen";
+                        case "16":
+                            return "sixteen";
+                        case "17":
+                            return "seventeen";
+                        case "18":
+                            return "eighteen";
+                        case "19":
+                            return "nineteen";
+                        default:
+                            return "COULDNOTHANDLE10-19";
+                    }
+                }
+                if (number[0] == '2')
+                {
+                    switch (number)
+                    {
+                        case "20":
+                            return "twenty";
+                        default:
+                            return $"twenty{Handle1to9(number[1])}";
+                        }
+                }
+                if (number[0] == '3')
+                {
+                    switch (number)
+                    {
+                        case "30":
+                            return "thirty";
+                        default:
+                            return $"thirty{Handle1to9(number[1])}";
+                        }
+                }
+                if (number[0] == '4')
+                {
+                    switch (number)
+                    {
+                        case "40":
+                            return "fourty";
+                        default:
+                            return $"fourty{Handle1to9(number[1])}";
+                        }
+                }
+                if (number[0] == '5')
+                {
+                    switch (number)
+                    {
+                        case "50":
+                            return "fifty";
+                        default:
+                            return $"fifty{Handle1to9(number[1])}";
+                        }
+                }
+                if (number[0] == '6')
+                {
+                    switch (number)
+                    {
+                        case "60":
+                            return "sixty";
+                        default:
+                            return $"sixty{Handle1to9(number[1])}";
+                        }
+                }
+                if (number[0] == '7')
+                {
+                    switch (number)
+                    {
+                        case "70":
+                            return "seventy";
+                        default:
+                            return $"seventy{Handle1to9(number[1])}";
+                        }
+                }
+                if (number[0] == '8')
+                {
+                    switch (number)
+                    {
+                        case "80":
+                            return "eightty";
+                        default:
+                            return $"thirty{Handle1to9(number[1])}";
+                        }
+                }
+                if (number[0] == '9')
+                {
+                    switch (number)
+                    {
+                        case "90":
+                            return "ninety";
+                        default:
+                            return $"ninety{Handle1to9(number[1])}";
+                        }
+                }
+                return "Could not handle 10s";
+            }
+            static string Handle100s(string number)
+            {
+
+                return $"{Handle1to9(number[0])} hundred";
+            }
+
+            static string Handle1000s(string number)
+            {
+
+                return $"{Handle1to9(number[0])} thousand";
+            }
+
+            return entireNumberAsString;
+
         }
     }
 }
