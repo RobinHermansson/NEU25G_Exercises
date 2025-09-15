@@ -73,7 +73,7 @@ namespace Functions
                         Console.WriteLine($"Here is your digits as a string array and in text: {string.Join(", ", numbersAsText)}");
                         break;
                     case 9:
-                        string fullNumbersResult = FullNumbersToText(9999);
+                        string fullNumbersResult = FullNumbersToText(9);
                         Console.WriteLine(fullNumbersResult);
                         break;
                     case 10:
@@ -224,19 +224,35 @@ namespace Functions
             
             if (entireNumberAsString.Length == 4)
             {
+                string thousands = Handle1000s(entireNumberAsString);
+                string plusHundreds = Handle100s(entireNumberAsString[1..]);
+                string tens = Handle10s(entireNumberAsString[2..]);
 
+                string thousandsPlusHundreds = $"{thousands}  {plusHundreds}";
+                string thousandsPlusHundredsPlusTens = $"{thousandsPlusHundreds} {tens}";
+                string fullString = thousandsPlusHundredsPlusTens;
+
+
+
+                Console.WriteLine(fullString);
             }
             if (entireNumberAsString.Length == 3)
             {
+                string hundreds = Handle100s(entireNumberAsString);
+                string tens = Handle10s(entireNumberAsString[1..]);
+                string fullString = $"{hundreds} {tens}";
+                Console.WriteLine(fullString);
 
             }
             if (entireNumberAsString.Length == 2)
             {
-
+                string fullString = Handle10s(entireNumberAsString);
+                Console.WriteLine(fullString);
             }
             if (entireNumberAsString.Length == 1)
-            {
-
+            {   
+                string fullString = Handle1to9(entireNumberAsString[0]);
+                Console.WriteLine(fullString);
             }
 
             static string Handle1to9(char character)
