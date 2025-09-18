@@ -77,7 +77,8 @@ namespace Functions
                         Console.WriteLine(fullNumbersResult);
                         break;
                     case 10:
-                        //FindIndexOf();
+                        int[] indexes = FindIndexOf("Hello world", 'o');
+                        Console.WriteLine(string.Join(", ", indexes));
                         break;
                     case 11:
                         //ThrowDice();
@@ -409,6 +410,35 @@ namespace Functions
             }
 
             return entireNumberAsString;
+
+        }
+        static int[] FindIndexOf(string stringToCheck, char charToFind)
+        {
+
+            byte charAppearances = 0;
+            for (byte i = 0; i < stringToCheck.Length; i++)
+            { 
+                if (stringToCheck[i] == charToFind)
+                {
+                    charAppearances += 1;
+                }
+                
+            }
+            int[] allAppearences = new int[charAppearances]; // this is to attempt to save allocated memory
+            byte addedToArray = 0;
+
+            for (byte i = 0; i < stringToCheck.Length; i++)
+            { 
+                if (stringToCheck[i] == charToFind)
+                {
+                    allAppearences[addedToArray] = i;
+                    addedToArray++;
+
+                }
+                
+            }
+
+            return allAppearences;
 
         }
     }
