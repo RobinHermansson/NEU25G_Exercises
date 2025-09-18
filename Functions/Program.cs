@@ -92,7 +92,7 @@ namespace Functions
                         MoveAnAtSignWithArrows();
                         break;
                     case 14:
-                        //TheWorm();
+                        TheWorm(rows: 5, columns: 12, numberOfObstacles: 1);
                         break;
                     default:
                         Console.WriteLine("Invalid selection. Try again.");
@@ -598,13 +598,91 @@ namespace Functions
 
 
         }
+        static void TheWorm(int rows, int columns, int numberOfObstacles)
+        {
+            char border = '+';
+            char obstacle = '#';
+            char snakeHead = '@';
+
+            int startYPos = rows / 2;
+            int startXPos = columns / 2;
+
+            char[,] initialState = BoxGenerator(rows, columns, numberOfObstacles);
+
+            initialState[startYPos, startXPos] = snakeHead;
+
+            UpdatedDrawBox(initialState);
+
+            
+
+        }
         // Helper function
         static void WriteAt(char charToWrite, int originalRow, int originalCol, int xcoord, int ycoord) 
+        {
+
+
+            Console.SetCursorPosition(originalCol + xcoord, originalRow + ycoord);
+            Console.Write(charToWrite);
+        }
+
+        static char[,] BoxGenerator(int rows, int columns, int numberOfObstacles)
+        {
+
+            char[,] box = new char[rows, columns];
+            char borderChar = '+';
+            char innerChar = '-';
+            char obstacleChar = '#';
+
+            Random myRand = new();
+            
+            Console.Clear();
+            int origRow = Console.CursorTop;
+            int origCol = Console.CursorLeft;
+
+            for (int heightI = 0; heightI < rows; heightI++)
             {
+                for (int borderY = 0; borderY < columns; borderY++)
+                {
+                    if (heightI == 0 || heightI == rows-1 || borderY == 0 || borderY == columns-1)
+                    {
+                        box[heightI, borderY] = borderChar; 
+                    }
+                    else
+                    {
+                        box[heightI, borderY] = innerChar;
 
-
-                Console.SetCursorPosition(originalCol + xcoord, originalRow + ycoord);
-                Console.Write(charToWrite);
+                    }   
+                }
             }
+
+            // place random obstacles.
+            for (int i = 0; i <= numberOfObstacles -1; i++)
+            {
+                box[myRand.Next(2, rows-1), myRand.Next(2, columns-1)] = obstacleChar; 
+            }
+            
+            
+            return box; 
+
+
+
+            
+            
+
+        }
+
+        static void UpdatedDrawBox(char[,] boxToDraw)
+        {
+            for (int row = 0; row < boxToDraw.GetLength(0); row++)
+            {
+                for (int column = 0; column < boxToDraw.GetLength(1); column++)
+                {
+                    Console.Write(boxToDraw[row, column]);
+                }
+                Console.WriteLine();
+            }
+
+        }
+
     }
 }
