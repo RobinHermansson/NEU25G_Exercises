@@ -89,7 +89,7 @@ namespace Functions
                         DrawBox(7, 4);
                         break;
                     case 13:
-                        //MoveAnAtSignWithArrows();
+                        MoveAnAtSignWithArrows();
                         break;
                     case 14:
                         //TheWorm();
@@ -496,14 +496,115 @@ namespace Functions
                 Console.WriteLine();
             }
 
-            static void WriteAt(char charToWrite, int originalRow, int originalCol, int xcoord, int ycoord) 
+            
+
+        }
+
+        static void MoveAnAtSignWithArrows()
+        {
+            int boxHeight = 14;
+            int boxWidth = 14;
+
+            char borderChar = '#';
+            char innerChar = '-';
+
+            char snakeHead = '@';
+
+            int startYPos = boxHeight / 2;
+            int startXPos = boxWidth / 2;
+
+            int currentYPos = startYPos;
+            int currentXPos = startXPos;
+            int nextYPos = currentYPos + 1;
+            int nextXPos = currentXPos + 1; 
+            int previousYPos;
+            int previousXPos;
+
+            Console.Clear();
+            Console.CursorVisible = false;
+            int origRow = Console.CursorTop;
+            int origCol = Console.CursorLeft;
+
+            DrawBox(boxHeight, boxWidth);
+            WriteAt(snakeHead, origRow, origCol, startXPos, startYPos);
+
+            while (true)
+            {
+
+                var userInput = Console.ReadKey();
+                if (userInput.Key == ConsoleKey.UpArrow)
+                {
+                    if (currentYPos -1 != 0) 
+                    {
+                        previousYPos = currentYPos;
+                        currentYPos--;
+                        WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
+                        WriteAt(innerChar, origRow, origCol, currentXPos, previousYPos);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (userInput.Key == ConsoleKey.DownArrow) 
+                {
+                    if (currentYPos + 2 != boxHeight)
+                    {
+                        previousYPos = currentYPos;
+                        currentYPos++;
+                        WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
+                        WriteAt(innerChar, origRow, origCol, currentXPos, previousYPos);
+                    }
+                    else 
+                    {
+                        continue;
+                    }
+
+
+                }
+                if (userInput.Key == ConsoleKey.LeftArrow) 
+                {
+                    if (currentXPos -1 != 0)
+                    {
+                        previousXPos = currentXPos;
+                        currentXPos--;
+                        WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
+                        WriteAt(innerChar, origRow, origCol, previousXPos, currentYPos);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (userInput.Key == ConsoleKey.RightArrow) 
+                {
+                    if (currentXPos +2 != boxWidth)
+                    {
+                        previousXPos = currentXPos;
+                        currentXPos++;
+                        WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
+                        WriteAt(innerChar, origRow, origCol, previousXPos, currentYPos);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                
+                
+            }
+
+
+
+
+        }
+        // Helper function
+        static void WriteAt(char charToWrite, int originalRow, int originalCol, int xcoord, int ycoord) 
             {
 
 
                 Console.SetCursorPosition(originalCol + xcoord, originalRow + ycoord);
                 Console.Write(charToWrite);
             }
-
-        }
     }
 }
