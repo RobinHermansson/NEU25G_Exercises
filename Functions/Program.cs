@@ -81,7 +81,8 @@ namespace Functions
                         Console.WriteLine(string.Join(", ", indexes));
                         break;
                     case 11:
-                        //ThrowDice();
+                        int[] diceRolls = ThrowDice(12);
+                        Console.WriteLine($"The dice rolled: {string.Join(", ", diceRolls)}");
                         break;
                     case 12:
                         //DrawBox();
@@ -440,6 +441,29 @@ namespace Functions
 
             return allAppearences;
 
+        }
+
+        static int[] ThrowDice(int howMany)
+        {
+            int[] finalResult = ThrowManyDice(howMany);
+
+            static int[] ThrowManyDice(int howMany)
+            {
+                Random diceRandom = new Random();
+
+                int[] result = new int[howMany];
+                byte additions = 0;
+                
+                for (int i = 1; i <=  howMany; i++)
+                {
+                    int diceValue = diceRandom.Next(1, 7);
+                    result[additions] = diceValue;
+                    additions++;
+                }
+                return result;
+            }
+
+            return finalResult;
         }
     }
 }
