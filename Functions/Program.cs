@@ -1,4 +1,5 @@
-﻿using System.Transactions;
+﻿using System.Data;
+using System.Transactions;
 
 namespace Functions
 {
@@ -85,7 +86,7 @@ namespace Functions
                         Console.WriteLine($"The dice rolled: {string.Join(", ", diceRolls)}");
                         break;
                     case 12:
-                        //DrawBox();
+                        DrawBox(7, 4);
                         break;
                     case 13:
                         //MoveAnAtSignWithArrows();
@@ -464,6 +465,45 @@ namespace Functions
             }
 
             return finalResult;
+        }
+
+        static void DrawBox(int height, int width)
+        {
+            char borderChar = '#';
+            char innerChar = '-';
+
+            
+
+            Console.Clear();
+            int origRow = Console.CursorTop;
+            int origCol = Console.CursorLeft;
+
+            for (int heightI = 0; heightI < height; heightI++)
+            {
+                for (int borderY = 0; borderY < width; borderY++)
+                {
+                    if (heightI == 0 || heightI == height-1 || borderY == 0 || borderY == width-1)
+                    {
+                        WriteAt(borderChar, origRow, origCol, heightI, borderY);
+                        //Console.Write(borderChar);
+                    }
+                    else
+                    {
+                        WriteAt(innerChar, origRow, origCol, heightI, borderY);
+                        //Console.Write(innerChar);
+                    }
+                }
+                Console.WriteLine();
+            }
+
+            static void WriteAt(char charToWrite, int originalRow, int originalCol, int xcoord, int ycoord) 
+            {
+
+
+                Console.SetCursorPosition(originalCol + xcoord, originalRow + ycoord);
+                Console.Write(charToWrite);
+            }
+
         }
     }
 }
