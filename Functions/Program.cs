@@ -92,7 +92,7 @@ namespace Functions
                         MoveAnAtSignWithArrows();
                         break;
                     case 14:
-                        TheWorm(rows: 5, columns: 12, numberOfObstacles: 1);
+                        TheWorm(rows: 14, columns: 36, numberOfObstacles: 1);
                         break;
                     default:
                         Console.WriteLine("Invalid selection. Try again.");
@@ -605,7 +605,11 @@ namespace Functions
             char obstacle = '#';
             char snakeHead = '@';
             char snakeBody = 'x';
+            char snakeFood = '*';
             int snakeLen = 3;
+
+            List<char> badCharactersList = new List<char> { border, obstacle, snakeHead, snakeBody };
+            
 
             int startYPos = rows / 2;
             int startXPos = columns / 2;
@@ -629,6 +633,7 @@ namespace Functions
             Console.Clear();
             Console.CursorVisible = false;
 
+            AddFoodToPlayArea(playArea, badCharactersList, snakeFood);
             UpdatedDrawBox(playArea);
 
             while (true)
@@ -650,6 +655,14 @@ namespace Functions
                     Console.Clear();
                     Console.WriteLine("YOU TOUCHED YOURSELF (:P), BAD!");
                     break;
+                }
+                if (steppedInto == snakeFood) 
+                {
+                    AddFoodToPlayArea(playArea, badCharactersList, snakeFood);
+
+                    snakeLen++;
+
+                                        
                 }
 
                 var userInput = Console.ReadKey();
@@ -820,6 +833,22 @@ namespace Functions
                 }
             }
 
+        }
+
+        static char[,] AddFoodToPlayArea(char[,] box, List<char> badCharactersList, char snakeFoodIcon)
+        {
+            Random myRand = new Random();
+            int randomYPos = myRand.Next(2, box.GetLength(0)-1);
+            int randomXPos = myRand.Next(2, box.GetLength(1)-1);
+            
+            while (badCharactersList.Contains(box[randomYPos, randomXPos]))
+            {
+                randomYPos = myRand.Next(2, box.GetLength(0)-1);
+                randomXPos = myRand.Next(2, box.GetLength(1)-1);
+            }
+
+            box[randomYPos, randomXPos] = snakeFoodIcon;
+            return box;
         }
 
     }
