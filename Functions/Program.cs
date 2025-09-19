@@ -656,14 +656,7 @@ namespace Functions
                     Console.WriteLine("YOU TOUCHED YOURSELF (:P), BAD!");
                     break;
                 }
-                if (steppedInto == snakeFood) 
-                {
-                    AddFoodToPlayArea(playArea, badCharactersList, snakeFood);
-
-                    snakeLen++;
-
-                                        
-                }
+                
 
                 var userInput = Console.ReadKey();
                 if (userInput.Key == ConsoleKey.UpArrow)
@@ -740,6 +733,14 @@ namespace Functions
                         playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
                     }
 
+                }
+                if (steppedInto == snakeFood) 
+                {
+                    AddFoodToPlayArea(playArea, badCharactersList, snakeFood);
+
+                    snakeLen++;
+
+                                        
                 }
                 UpdatedWriteAt(playArea);
 
