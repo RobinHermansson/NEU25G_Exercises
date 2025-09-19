@@ -605,7 +605,7 @@ namespace Functions
             char obstacle = '#';
             char snakeHead = '@';
             char snakeBody = 'x';
-            int snakeLen = 1;
+            int snakeLen = 3;
 
             int startYPos = rows / 2;
             int startXPos = columns / 2;
@@ -622,12 +622,13 @@ namespace Functions
             int previousYPos = currentYPos;
             int previousXPos = currentXPos;
 
+            (int Y, int X) snakeBodyPart = (currentYPos,currentXPos);
+            List<(int,int)> snakeBodyXYList = new List<(int, int)>();
+
             char steppedInto = ' ';
             Console.Clear();
             Console.CursorVisible = false;
 
-            int origRow = Console.CursorTop;
-            int origCol = Console.CursorLeft;
             UpdatedDrawBox(playArea);
 
             while (true)
@@ -644,29 +645,36 @@ namespace Functions
                     Console.WriteLine("YOU TOUCHED A BORDER AND IS DED.");
                     break;
                 }
+                if (steppedInto == snakeBody)
+                {
+                    Console.Clear();
+                    Console.WriteLine("YOU TOUCHED YOURSELF (:P), BAD!");
+                    break;
+                }
 
                 var userInput = Console.ReadKey();
                 if (userInput.Key == ConsoleKey.UpArrow)
                 {
                     steppedInto = playArea[currentYPos - 1, currentXPos];
                     playArea[currentYPos - 1, currentXPos] = snakeHead;
+                   
                     playArea[currentYPos, currentXPos] = innerChar;
+                    
+                    snakeBodyPart = (currentYPos, currentXPos);
+                    snakeBodyXYList.Insert(0, snakeBodyPart);
                     currentYPos--;
 
-                    UpdatedWriteAt(playArea);
-
+                    
                 }                  
                 if (userInput.Key == ConsoleKey.DownArrow)
                 {
                     steppedInto = playArea[currentYPos + 1, currentXPos];
-
-
                     playArea[currentYPos + 1, currentXPos] = snakeHead;
                     playArea[currentYPos, currentXPos] = innerChar;
+                    
+                    snakeBodyPart = (currentYPos, currentXPos);
+                    snakeBodyXYList.Insert(0, snakeBodyPart);
                     currentYPos++;
-
-                    UpdatedWriteAt(playArea);
-
 
                 }
 
@@ -678,11 +686,10 @@ namespace Functions
 
                     playArea[currentYPos, currentXPos-1] = snakeHead;
                     playArea[currentYPos, currentXPos] = innerChar;
+
+                    snakeBodyPart = (currentYPos, currentXPos);
+                    snakeBodyXYList.Insert(0, snakeBodyPart);
                     currentXPos--;
-
-
-
-                    UpdatedWriteAt(playArea);
 
                 }
                 if (userInput.Key == ConsoleKey.RightArrow)
@@ -691,12 +698,38 @@ namespace Functions
 
                     playArea[currentYPos, currentXPos+1] = snakeHead;
                     playArea[currentYPos, currentXPos] = innerChar;
+                    
+                    snakeBodyPart = (currentYPos, currentXPos);
+                    snakeBodyXYList.Insert(0, snakeBodyPart);
                     currentXPos++;
 
-
-                    UpdatedWriteAt(playArea);
+                }
+                //int bodyY = snakeBodyXYList[0].Item1;
+                if (snakeBodyXYList.Count > snakeLen)
+                {
+                    
+                    (int, int) lastXY = snakeBodyXYList.Last();
+                    
+                    for (int i = 0; i < snakeLen; i++) 
+                    { 
+                        playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
+                    }
+                    playArea[lastXY.Item1, lastXY.Item2] = innerChar;
+                    snakeBodyXYList.Remove(lastXY);
 
                 }
+                else
+                {
+                    (int, int) lastXY = snakeBodyXYList.Last();
+                    
+                    for (int i = 0; i < snakeBodyXYList.Count; i++) 
+                    { 
+                        playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
+                    }
+
+                }
+                UpdatedWriteAt(playArea);
+
             }
 
 
