@@ -601,17 +601,85 @@ namespace Functions
         static void TheWorm(int rows, int columns, int numberOfObstacles)
         {
             char border = '+';
+            char innerChar = '-';
             char obstacle = '#';
             char snakeHead = '@';
+            char snakeBody = 'x';
+            int snakeLen = 1;
 
             int startYPos = rows / 2;
             int startXPos = columns / 2;
 
-            char[,] initialState = BoxGenerator(rows, columns, numberOfObstacles);
+            char[,] playArea = BoxGenerator(rows, columns, numberOfObstacles);
 
-            initialState[startYPos, startXPos] = snakeHead;
+            playArea[startYPos, startXPos] = snakeHead;
 
-            UpdatedDrawBox(initialState);
+            
+            int currentYPos = startYPos;
+            int currentXPos = startXPos;
+            int nextYPos = currentYPos + 1;
+            int nextXPos = currentXPos + 1; 
+            int previousYPos;
+            int previousXPos;
+
+            Console.Clear();
+            Console.CursorVisible = false;
+
+            int origRow = Console.CursorTop;
+            int origCol = Console.CursorLeft;
+            UpdatedDrawBox(playArea);
+
+            while (true)
+            {
+                if (playArea[currentYPos, currentXPos] == obstacle)
+                {
+                    Console.Clear();
+                    Console.WriteLine("YOU TOUCHED AN OBSTACLE AND IS DED.");
+                    break;
+                }
+                if (playArea[currentYPos, currentXPos] == border)
+                {
+                    Console.Clear();
+                    Console.WriteLine("YOU TOUCHED A BORDER AND IS DED.");
+                    break;
+                }
+
+                var userInput = Console.ReadKey();
+                if (userInput.Key == ConsoleKey.UpArrow)
+                {
+                    previousYPos = currentYPos;
+                    currentYPos--;
+                    WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
+                    WriteAt(innerChar, origRow, origCol, currentXPos, previousYPos);
+                }                  
+                if (userInput.Key == ConsoleKey.DownArrow)
+                {
+                    previousYPos = currentYPos;
+                    currentYPos++;
+                    WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
+                    WriteAt(innerChar, origRow, origCol, currentXPos, previousYPos);
+                }
+
+
+                if (userInput.Key == ConsoleKey.LeftArrow)
+                {
+                    previousXPos = currentXPos;
+                    currentXPos--;
+                    WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
+                    WriteAt(innerChar, origRow, origCol, previousXPos, currentYPos);
+                }
+                if (userInput.Key == ConsoleKey.RightArrow)
+                {
+                    previousXPos = currentXPos;
+                    currentXPos++;
+                    WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
+                    WriteAt(innerChar, origRow, origCol, previousXPos, currentYPos);
+                }
+            }
+
+
+
+
 
             
 
