@@ -638,25 +638,7 @@ namespace Functions
 
             while (true)
             {
-                if (steppedInto == obstacle)
-                {
-                    Console.Clear();
-                    Console.WriteLine("YOU TOUCHED AN OBSTACLE AND IS DED.");
-                    break;
-                }
-                if (steppedInto == border)
-                {
-                    Console.Clear();
-                    Console.WriteLine("YOU TOUCHED A BORDER AND IS DED.");
-                    break;
-                }
-                if (steppedInto == snakeBody)
-                {
-                    Console.Clear();
-                    Console.WriteLine("YOU TOUCHED YOURSELF (:P), BAD!");
-                    break;
-                }
-                
+                                
 
                 var userInput = Console.ReadKey();
                 if (userInput.Key == ConsoleKey.UpArrow)
@@ -737,11 +719,28 @@ namespace Functions
                 if (steppedInto == snakeFood) 
                 {
                     AddFoodToPlayArea(playArea, badCharactersList, snakeFood);
-
                     snakeLen++;
-
                                         
                 }
+                if (steppedInto == obstacle)
+                {
+                    Console.Clear();
+                    Console.WriteLine("YOU TOUCHED AN OBSTACLE AND IS DED.");
+                    break;
+                }
+                if (steppedInto == border)
+                {
+                    Console.Clear();
+                    Console.WriteLine("YOU TOUCHED A BORDER AND IS DED.");
+                    break;
+                }
+                if (steppedInto == snakeBody)
+                {
+                    Console.Clear();
+                    Console.WriteLine("YOU TOUCHED YOURSELF (:P), BAD!");
+                    break;
+                }
+
                 UpdatedWriteAt(playArea);
 
             }
