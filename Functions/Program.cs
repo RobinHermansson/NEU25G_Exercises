@@ -619,9 +619,10 @@ namespace Functions
             int currentXPos = startXPos;
             int nextYPos = currentYPos + 1;
             int nextXPos = currentXPos + 1; 
-            int previousYPos;
-            int previousXPos;
+            int previousYPos = currentYPos;
+            int previousXPos = currentXPos;
 
+            char steppedInto = ' ';
             Console.Clear();
             Console.CursorVisible = false;
 
@@ -631,13 +632,13 @@ namespace Functions
 
             while (true)
             {
-                if (playArea[currentYPos, currentXPos] == obstacle)
+                if (steppedInto == obstacle)
                 {
                     Console.Clear();
                     Console.WriteLine("YOU TOUCHED AN OBSTACLE AND IS DED.");
                     break;
                 }
-                if (playArea[currentYPos, currentXPos] == border)
+                if (steppedInto == border)
                 {
                     Console.Clear();
                     Console.WriteLine("YOU TOUCHED A BORDER AND IS DED.");
@@ -647,33 +648,54 @@ namespace Functions
                 var userInput = Console.ReadKey();
                 if (userInput.Key == ConsoleKey.UpArrow)
                 {
-                    previousYPos = currentYPos;
+                    steppedInto = playArea[currentYPos - 1, currentXPos];
+                    playArea[currentYPos - 1, currentXPos] = snakeHead;
+                    playArea[currentYPos, currentXPos] = innerChar;
                     currentYPos--;
-                    WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
-                    WriteAt(innerChar, origRow, origCol, currentXPos, previousYPos);
+
+                    UpdatedWriteAt(playArea);
+
                 }                  
                 if (userInput.Key == ConsoleKey.DownArrow)
                 {
-                    previousYPos = currentYPos;
+                    steppedInto = playArea[currentYPos + 1, currentXPos];
+
+
+                    playArea[currentYPos + 1, currentXPos] = snakeHead;
+                    playArea[currentYPos, currentXPos] = innerChar;
                     currentYPos++;
-                    WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
-                    WriteAt(innerChar, origRow, origCol, currentXPos, previousYPos);
+
+                    UpdatedWriteAt(playArea);
+
+
                 }
 
 
                 if (userInput.Key == ConsoleKey.LeftArrow)
                 {
-                    previousXPos = currentXPos;
+                    steppedInto = playArea[currentYPos, currentXPos-1];
+
+
+                    playArea[currentYPos, currentXPos-1] = snakeHead;
+                    playArea[currentYPos, currentXPos] = innerChar;
                     currentXPos--;
-                    WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
-                    WriteAt(innerChar, origRow, origCol, previousXPos, currentYPos);
+
+
+
+                    UpdatedWriteAt(playArea);
+
                 }
                 if (userInput.Key == ConsoleKey.RightArrow)
                 {
-                    previousXPos = currentXPos;
+                    steppedInto = playArea[currentYPos, currentXPos+1];
+
+                    playArea[currentYPos, currentXPos+1] = snakeHead;
+                    playArea[currentYPos, currentXPos] = innerChar;
                     currentXPos++;
-                    WriteAt(snakeHead, origRow, origCol, currentXPos, currentYPos);
-                    WriteAt(innerChar, origRow, origCol, previousXPos, currentYPos);
+
+
+                    UpdatedWriteAt(playArea);
+
                 }
             }
 
@@ -748,6 +770,21 @@ namespace Functions
                     Console.Write(boxToDraw[row, column]);
                 }
                 Console.WriteLine();
+            }
+
+        }
+
+        static void UpdatedWriteAt(char[,] box) 
+        {
+            for (int row = 0; row < box.GetLength(0); row++)
+            {
+                for (int column = 0; column < box.GetLength(1); column++)
+                {
+                    Console.SetCursorPosition(column, row);
+                    Console.Write(box[row, column]);
+
+                    // Console.Write(boxToDraw[row, column]);
+                }
             }
 
         }
