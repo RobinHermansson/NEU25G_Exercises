@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.ComponentModel;
+using System.Data;
 using System.Transactions;
 
 namespace Functions
@@ -600,16 +601,21 @@ namespace Functions
         }
         static void TheWorm(int rows, int columns, int numberOfObstacles)
         {
+            Dictionary<string, (int, int)> gameState = new();
+
+            int refreshRate = 150;
+            int loopsRunThrough = 0;
             char border = '+';
             char innerChar = '-';
             char obstacle = '#';
             char snakeHead = '@';
             char snakeBody = 'x';
             char snakeFood = '*';
-            int snakeLen = 3;
+            int snakeLen = 1;
+
 
             List<char> badCharactersList = new List<char> { border, obstacle, snakeHead, snakeBody };
-            
+
 
             int startYPos = rows / 2;
             int startXPos = columns / 2;
@@ -618,16 +624,20 @@ namespace Functions
 
             playArea[startYPos, startXPos] = snakeHead;
 
-            
+
             int currentYPos = startYPos;
             int currentXPos = startXPos;
             int nextYPos = currentYPos + 1;
-            int nextXPos = currentXPos + 1; 
+            int nextXPos = currentXPos + 1;
             int previousYPos = currentYPos;
             int previousXPos = currentXPos;
+            (int, int) currentPos = (currentYPos, currentXPos);
 
-            (int Y, int X) snakeBodyPart = (currentYPos,currentXPos);
-            List<(int,int)> snakeBodyXYList = new List<(int, int)>();
+            (int, int) currentDirection = (0, 0);
+
+            (int Y, int X) snakeBodyPart = (currentYPos, currentXPos);
+            List<(int, int)> snakeBodyXYList = new List<(int, int)>();
+
 
             char steppedInto = ' ';
             Console.Clear();
@@ -638,111 +648,149 @@ namespace Functions
 
             while (true)
             {
-                                
-
-                var userInput = Console.ReadKey();
-                if (userInput.Key == ConsoleKey.UpArrow)
+                if (currentDirection == (0, 0))
                 {
-                    steppedInto = playArea[currentYPos - 1, currentXPos];
-                    playArea[currentYPos - 1, currentXPos] = snakeHead;
+                    // This IF is just to have the game (hopefully) wait for a first input, and then continues on without stopping.
+                    var userInput = Console.ReadKey();
+                    currentDirection = HandleMoveDirections(userInput);
+                }
+                var userPressedKey = Console.KeyAvailable;
+                if (userPressedKey)
+                {
+                    currentDirection = HandleMoveDirections(Console.ReadKey());
+                }
+
+
+
+
+                Thread.Sleep(10);
+                loopsRunThrough += 10;
+                if (loopsRunThrough > refreshRate)
+                {
+                    (int, int) newPos = (currentPos.Item1 + currentDirection.Item1, currentPos.Item2 + currentDirection.Item2);
+                    steppedInto = playArea[newPos.Item1, newPos.Item2];
+                    if (IsACollision(steppedInto))
+                    {
+                        break;
+                    }
+                    if (steppedInto == snakeFood)
+                    {
+                        snakeLen++;
+                    }
+                    playArea[newPos.Item1, newPos.Item2] = '@';
+                    playArea[currentYPos, currentXPos] = '-';
+                    snakeBodyPart = (currentYPos, currentXPos);
+                    snakeBodyXYList.Insert(0, snakeBodyPart);
+                    currentPos = newPos;
+                    if (snakeBodyXYList.Count > snakeLen)
+                    {
+
+                        (int, int) lastXY = snakeBodyXYList.Last();
+
+                        for (int i = 0; i < snakeLen; i++)
+                        {
+                            playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
+                        }
+                        playArea[lastXY.Item1, lastXY.Item2] = innerChar;
+                        snakeBodyXYList.Remove(lastXY);
+
+                    }
+                    else
+                    {
+                        playArea[snakeBodyXYList[0].Item1, snakeBodyXYList[0].Item2] = innerChar;
+                        playArea[currentYPos, currentXPos] = snakeBody;
+                        snakeBodyXYList[0] = (newPos.Item1, newPos.Item2);
+                    }
+
+                    //}
+                    //playArea[currentPos.Item1, currentPos.Item2] = '-';
                    
-                    playArea[currentYPos, currentXPos] = innerChar;
-                    
-                    snakeBodyPart = (currentYPos, currentXPos);
-                    snakeBodyXYList.Insert(0, snakeBodyPart);
-                    currentYPos--;
 
-                    
-                }                  
-                if (userInput.Key == ConsoleKey.DownArrow)
-                {
-                    steppedInto = playArea[currentYPos + 1, currentXPos];
-                    playArea[currentYPos + 1, currentXPos] = snakeHead;
-                    playArea[currentYPos, currentXPos] = innerChar;
-                    
-                    snakeBodyPart = (currentYPos, currentXPos);
-                    snakeBodyXYList.Insert(0, snakeBodyPart);
-                    currentYPos++;
+                    //int bodyY = snakeBodyXYList[0].Item1;
+                    //if (snakeBodyXYList.Count > snakeLen)
+                    //{
+                    //    
+                    //    (int, int) lastXY = snakeBodyXYList.Last();
+                    //    
+                    //    for (int i = 0; i < snakeLen; i++) 
+                    //    { 
+                    //        playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
+                    //    }
+                    //    playArea[lastXY.Item1, lastXY.Item2] = innerChar;
+                    //    snakeBodyXYList.Remove(lastXY);
 
+                    //}
+                    //else
+                    //{
+                    //    (int, int) lastXY = snakeBodyXYList.Last();
+                    //    
+                    //    for (int i = 0; i < snakeBodyXYList.Count; i++) 
+                    //    { 
+                    //        playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
+                    //    }
+
+                    //}
+
+                    loopsRunThrough = 0;
+                    UpdatedWriteAt(playArea);
                 }
 
+            }
 
-                if (userInput.Key == ConsoleKey.LeftArrow)
-                {
-                    steppedInto = playArea[currentYPos, currentXPos-1];
+            static bool IsACollision(char steppedInto) 
+            {
+                char border = '+';
+                char obstacle = '#';
+                char snakeBody = 'x';
 
-
-                    playArea[currentYPos, currentXPos-1] = snakeHead;
-                    playArea[currentYPos, currentXPos] = innerChar;
-
-                    snakeBodyPart = (currentYPos, currentXPos);
-                    snakeBodyXYList.Insert(0, snakeBodyPart);
-                    currentXPos--;
-
-                }
-                if (userInput.Key == ConsoleKey.RightArrow)
-                {
-                    steppedInto = playArea[currentYPos, currentXPos+1];
-
-                    playArea[currentYPos, currentXPos+1] = snakeHead;
-                    playArea[currentYPos, currentXPos] = innerChar;
-                    
-                    snakeBodyPart = (currentYPos, currentXPos);
-                    snakeBodyXYList.Insert(0, snakeBodyPart);
-                    currentXPos++;
-
-                }
-                //int bodyY = snakeBodyXYList[0].Item1;
-                if (snakeBodyXYList.Count > snakeLen)
-                {
-                    
-                    (int, int) lastXY = snakeBodyXYList.Last();
-                    
-                    for (int i = 0; i < snakeLen; i++) 
-                    { 
-                        playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
-                    }
-                    playArea[lastXY.Item1, lastXY.Item2] = innerChar;
-                    snakeBodyXYList.Remove(lastXY);
-
-                }
-                else
-                {
-                    (int, int) lastXY = snakeBodyXYList.Last();
-                    
-                    for (int i = 0; i < snakeBodyXYList.Count; i++) 
-                    { 
-                        playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
-                    }
-
-                }
-                if (steppedInto == snakeFood) 
-                {
-                    AddFoodToPlayArea(playArea, badCharactersList, snakeFood);
-                    snakeLen++;
-                                        
-                }
                 if (steppedInto == obstacle)
                 {
                     Console.Clear();
                     Console.WriteLine("YOU TOUCHED AN OBSTACLE AND IS DED.");
-                    break;
+                    return true; 
+
                 }
                 if (steppedInto == border)
                 {
                     Console.Clear();
                     Console.WriteLine("YOU TOUCHED A BORDER AND IS DED.");
-                    break;
+                    return true;
+
                 }
                 if (steppedInto == snakeBody)
                 {
                     Console.Clear();
                     Console.WriteLine("YOU TOUCHED YOURSELF (:P), BAD!");
-                    break;
+                    return true;
                 }
 
-                UpdatedWriteAt(playArea);
+                return false;
 
+            }
+
+
+            static (int,int) HandleMoveDirections(ConsoleKeyInfo userInput)
+            {
+                (int, int) direction = new();
+                if (userInput.Key == ConsoleKey.UpArrow)
+                {
+                    direction = (-1, 0);
+                }
+                if (userInput.Key == ConsoleKey.DownArrow)
+                {
+                    direction = (1, 0);
+                }
+                if (userInput.Key == ConsoleKey.LeftArrow)
+                {
+                    direction = (0, -1);
+                }
+                if (userInput.Key == ConsoleKey.RightArrow)
+                {
+                    direction = (0, 1);
+                }
+
+
+                return direction; 
             }
 
 
