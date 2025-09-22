@@ -93,7 +93,7 @@ namespace Functions
                         MoveAnAtSignWithArrows();
                         break;
                     case 14:
-                        TheWorm(rows: 14, columns: 36, numberOfObstacles: 1);
+                        TheWorm(rows: 14, columns: 36, numberOfObstacles: 5);
                         break;
                     default:
                         Console.WriteLine("Invalid selection. Try again.");
@@ -603,7 +603,7 @@ namespace Functions
         {
             Dictionary<string, (int, int)> gameState = new();
 
-            int refreshRate = 150;
+            int refreshRate = 40;
             int loopsRunThrough = 0;
             char border = '+';
             char innerChar = '-';
@@ -676,10 +676,11 @@ namespace Functions
                     if (steppedInto == snakeFood)
                     {
                         snakeLen++;
+                        AddFoodToPlayArea(playArea, badCharactersList, snakeFood);
                     }
                     playArea[newPos.Item1, newPos.Item2] = '@';
-                    playArea[currentYPos, currentXPos] = '-';
-                    snakeBodyPart = (currentYPos, currentXPos);
+                    playArea[currentPos.Item1, currentPos.Item2] = '-';
+                    snakeBodyPart = (currentPos.Item1, currentPos.Item2);
                     snakeBodyXYList.Insert(0, snakeBodyPart);
                     currentPos = newPos;
                     if (snakeBodyXYList.Count > snakeLen)
@@ -695,42 +696,6 @@ namespace Functions
                         snakeBodyXYList.Remove(lastXY);
 
                     }
-                    else
-                    {
-                        playArea[snakeBodyXYList[0].Item1, snakeBodyXYList[0].Item2] = innerChar;
-                        playArea[currentYPos, currentXPos] = snakeBody;
-                        snakeBodyXYList[0] = (newPos.Item1, newPos.Item2);
-                    }
-
-                    //}
-                    //playArea[currentPos.Item1, currentPos.Item2] = '-';
-                   
-
-                    //int bodyY = snakeBodyXYList[0].Item1;
-                    //if (snakeBodyXYList.Count > snakeLen)
-                    //{
-                    //    
-                    //    (int, int) lastXY = snakeBodyXYList.Last();
-                    //    
-                    //    for (int i = 0; i < snakeLen; i++) 
-                    //    { 
-                    //        playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
-                    //    }
-                    //    playArea[lastXY.Item1, lastXY.Item2] = innerChar;
-                    //    snakeBodyXYList.Remove(lastXY);
-
-                    //}
-                    //else
-                    //{
-                    //    (int, int) lastXY = snakeBodyXYList.Last();
-                    //    
-                    //    for (int i = 0; i < snakeBodyXYList.Count; i++) 
-                    //    { 
-                    //        playArea[snakeBodyXYList[i].Item1, snakeBodyXYList[i].Item2] = snakeBody;
-                    //    }
-
-                    //}
-
                     loopsRunThrough = 0;
                     UpdatedWriteAt(playArea);
                 }
