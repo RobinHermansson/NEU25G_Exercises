@@ -1,4 +1,6 @@
 ﻿
+using Properties;
+
 while (true) 
 {
     Console.WriteLine("Select any of the given Exercise options " +
@@ -20,6 +22,11 @@ while (true)
     switch (selection) 
     {
         case 1:
+            Person myPerson = new Person();
+            myPerson.FirstName = "Lars";
+
+            Console.WriteLine($"Here is myPerson's FirstName, through a public Property: {myPerson.FirstName}");
+            Console.WriteLine();
             break;
         case 2:
             break;
