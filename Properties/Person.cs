@@ -17,5 +17,12 @@
         }
 
         public string LastName { get; set; }  // Exercise 2; adding a public autoproperty
+        public string FullName 
+        {
+            get 
+            {
+                return string.Join(" ", FirstName, LastName);
+            }
+        }
     }
 }

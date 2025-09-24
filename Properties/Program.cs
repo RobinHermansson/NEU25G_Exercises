@@ -5,8 +5,8 @@ while (true)
 {
     Console.WriteLine("Select any of the given Exercise options " +
         "\n1. Person with Property FirstName" +
-        "\n2. Autoproperty LastName" +
-        "\n3. Read-only property FirstName" +
+        "\n2. Autoproperty LastName (NO PRINT AS IT WAS INTERNAL CHANGE)" +
+        "\n3. Read-only property FullName" +
         "\n4. Steps calculator" +
         "\n5. Car" +
         "\n6. Glas o' water" +
@@ -31,6 +31,8 @@ while (true)
         case 2:
             break;
         case 3:
+            Person myNewPerson = new Person() { FirstName = "Robin", LastName = "Hermansson" };
+            Console.WriteLine($"Here is the FullName fetched through properties: {myNewPerson.FullName}");
             break;
         case 4:
             break;
