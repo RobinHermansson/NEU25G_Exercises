@@ -1,5 +1,6 @@
 ﻿
 using Properties;
+using System.Drawing;
 
 while (true) 
 {
@@ -19,7 +20,7 @@ while (true)
 
     int selection = int.Parse(Console.ReadLine());
 
-    switch (selection) 
+    switch (selection)
     {
         case 1:
             Person myPerson = new Person();
@@ -37,7 +38,7 @@ while (true)
         case 4:
             StepsCounter stepsCounter = new();
             Console.WriteLine($"Current amount of steps: {stepsCounter.Steps}");
-            for (int i = 0; i < 100; i++ )
+            for (int i = 0; i < 100; i++)
             {
                 stepsCounter.IncreaseSteps();
             }
@@ -47,6 +48,10 @@ while (true)
             Console.WriteLine($"The count is now: {stepsCounter.Steps}");
             break;
         case 5:
+            Car myCar = new() { Price = 100_000, Color = "Blue", Model = "Toyota"};
+            Console.WriteLine($"The price of myCar is now: {myCar.Price}");
+            myCar.HalfPrice();
+            Console.WriteLine($"Suddenly there is a sale, it is now half off. \nNew price: {myCar.Price}");
             break;
         case 6:
             break;
