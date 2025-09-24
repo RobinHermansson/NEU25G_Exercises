@@ -35,6 +35,16 @@ while (true)
             Console.WriteLine($"Here is the FullName fetched through properties: {myNewPerson.FullName}");
             break;
         case 4:
+            StepsCounter stepsCounter = new();
+            Console.WriteLine($"Current amount of steps: {stepsCounter.Steps}");
+            for (int i = 0; i < 100; i++ )
+            {
+                stepsCounter.IncreaseSteps();
+            }
+            Console.WriteLine($"I have now looped 100 times and the step count is: {stepsCounter.Steps}");
+            Console.WriteLine($"Testing to reset.");
+            stepsCounter.ResetSteps();
+            Console.WriteLine($"The count is now: {stepsCounter.Steps}");
             break;
         case 5:
             break;
