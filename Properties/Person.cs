@@ -15,5 +15,7 @@
                 this._firstName = value;
             }
         }
+
+        public string LastName { get; set; }  // Exercise 2; adding a public autoproperty
     }
 }
