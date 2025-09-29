@@ -32,9 +32,13 @@
 
         public void FillGlass()
         {
-            if (_isFull)
+            if (IsFull && !IsBroken)
             {
-               Console.WriteLine("The glas is already full.");
+                Console.WriteLine("The glas is already full.");
+            }
+            else if (IsBroken)
+            {
+                Console.WriteLine("The glass is broken, can't fill it!");
             }
             else
             {
@@ -45,10 +49,13 @@
 
         public void EmptyGlass()
         {
-            if (_isFull)
+            if (IsFull && !IsBroken)
             {
-               Console.WriteLine("Emptying the glass!");
+                Console.WriteLine("Emptying the glass!");
                 IsFull = false;
+            }
+            else if (IsBroken) {
+                Console.WriteLine("The glass is broken and can not empty it any further");
             }
             else
             {
@@ -59,14 +66,19 @@
         public void BreakTheGlass() 
         {
 
-            if (_isFull && !IsBroken)
+            if (IsFull && !IsBroken)
             {
-                Console.WriteLine("The glass broke and the water is splling out!");
+                Console.WriteLine("The glass broke and the water is spilling out!");
                 IsBroken = true;
             }
             else if (IsBroken) 
             {
                 Console.WriteLine("The glass is already broken.");
+            }
+            else if (!IsBroken && !IsFull) 
+            {
+                Console.WriteLine("The glass broke.");
+                IsBroken = true;
             }
 
         }

@@ -54,6 +54,14 @@ while (true)
             Console.WriteLine($"Suddenly there is a sale, it is now half off. \nNew price: {myCar.Price}");
             break;
         case 6:
+            Glasscup cup = new();
+            cup.EmptyGlass();
+            cup.FillGlass();
+            cup.EmptyGlass();
+            cup.BreakTheGlass();
+            cup.FillGlass();
+            cup.EmptyGlass();
+            
             break;
         case 7:
             break;
