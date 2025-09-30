@@ -18,7 +18,7 @@ namespace Inheritence
         }
         public override string ToString()
         {
-            return $"A {Color} {Model} from {Brand}";
+            return $"A {Color} {Size.Length:F1} meter long {Model} from {Brand}";
         }
     }
 }
