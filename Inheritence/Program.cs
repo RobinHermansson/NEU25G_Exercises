@@ -32,6 +32,7 @@ while (true)
             Console.WriteLine(myVehicleBrandAndColor);
             break;
         case 3:
+            Console.WriteLine(new Car(Brand.Toyota, "Yaris", Color.White));
             break;
         case 4:
             break;

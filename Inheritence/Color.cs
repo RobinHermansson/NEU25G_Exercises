@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inheritence
 {
-    enum Color
+    public enum Color
     {
         White,
         Yellow,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inheritence
 {
-     enum Brand
+    public enum Brand
     {
         Volvo,
         Ford,

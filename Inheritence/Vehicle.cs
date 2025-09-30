@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Inheritence
 {
-    class Vehicle
+    public class Vehicle
     {
         public Brand Brand { get; set; }
         public Color Color { get; set; }
 
+        public Vehicle ()
+        {
+        }
         public Vehicle (Brand brand, Color color)
         {
             Brand = brand;
