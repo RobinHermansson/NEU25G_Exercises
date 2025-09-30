@@ -1,4 +1,6 @@
 ﻿
+using Inheritence;
+
 while (true) 
 {
     Console.WriteLine("Select any of the given Exercise options " +
@@ -24,6 +26,10 @@ while (true)
             Console.WriteLine("No printout needed, as the exercise was focused on the setup/creation of classes.");
             break;
         case 2:
+            Vehicle myVehicleDefaultColor = new Vehicle(Brand.Toyota);
+            Vehicle myVehicleBrandAndColor = new Vehicle(Brand.Kia, Color.Black);
+            Console.WriteLine(myVehicleDefaultColor);
+            Console.WriteLine(myVehicleBrandAndColor);
             break;
         case 3:
             break;

@@ -22,5 +22,10 @@ namespace Inheritence
             Brand = brand;
             Color = Color.Gold;
         }
+
+        public override string ToString()
+        {
+            return $"This vehicle is a {Color} {Brand}";
+        }
     }
 }
