@@ -21,6 +21,7 @@ while (true)
     switch (selection)
     {
         case 1:
+            Console.WriteLine("No printout needed, as the exercise was focused on the setup/creation of classes.");
             break;
         case 2:
             break;
@@ -47,4 +48,5 @@ while (true)
                  
     }
 }
+
 
