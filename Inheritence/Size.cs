@@ -9,12 +9,12 @@ namespace Inheritence
 {
     public struct Size
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
 
-        public int Length { get; set; }
+        public double Length { get; set; }
 
-        public Size (int length, int width, int height)
+        public Size (double length, double width, double height)
         {
 
             Length = length;

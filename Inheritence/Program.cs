@@ -35,6 +35,8 @@ while (true)
             Console.WriteLine(new Car(Brand.Toyota, "Yaris", Color.White));
             break;
         case 4:
+            Vehicle myRandomVehicle = new Vehicle();
+            Console.WriteLine(myRandomVehicle);
             break;
         case 5:
             break;
