@@ -3,16 +3,16 @@ while (true)
 {
     Console.WriteLine("Select any of the given Exercise options " +
         "\n1. Create a class for vehicles" +
-        "\n2. Autoproperty LastName (NO PRINT AS IT WAS INTERNAL CHANGE)" +
+        "\n2. Create an override for String()" +
         "\n3. Create a subclass for Cars" +
         "\n4. Create a struct to store length, width and height" +
         "\n5. Initialize Vehicle and print Car" +
-        "\n6. Circles inheritiing from Shape" +
+        "\n6. Circles inheriting from Shape" +
         "\n7. Squares also inheriting from Shape" +
         "\n8. Adding Print() to Shapes" +
         "\n9. An array of circles and squares" +
-        "\n10. Static priint methods" +
-        "\n11. Coloriize 'PrintAll()'" +
+        "\n10. Static print methods" +
+        "\n11. Colorize 'PrintAll()'" +
         "\n12. Random colors"
         );
 
@@ -39,6 +39,8 @@ while (true)
         case 10:
             break;
         case 11:
+            break;
+        case 12:
             break;
         default:
             break;
