@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Inheritence
+﻿namespace Inheritence
 {
     public struct Size
     {
@@ -14,7 +7,7 @@ namespace Inheritence
 
         public double Length { get; set; }
 
-        public Size (double length, double width, double height)
+        public Size(double length, double width, double height)
         {
 
             Length = length;

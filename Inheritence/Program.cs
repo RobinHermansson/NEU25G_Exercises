@@ -1,7 +1,7 @@
 ﻿
 using Inheritence;
 
-while (true) 
+while (true)
 {
     Console.WriteLine("Select any of the given Exercise options " +
         "\n1. Create a class for vehicles" +
@@ -55,7 +55,7 @@ while (true)
             break;
         default:
             break;
-                 
+
     }
 }
 

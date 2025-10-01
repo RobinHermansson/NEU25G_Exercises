@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Inheritence
+﻿namespace Inheritence
 {
     public class Vehicle
     {
@@ -13,7 +6,7 @@ namespace Inheritence
         public Color Color { get; set; }
 
         public Size Size { get; }
-        public Vehicle ()
+        public Vehicle()
         {
             var randomSelectionBrand = new Random().Next(0, 5);
             var randomSelectionColor = new Random().Next(0, 5);
@@ -25,15 +18,15 @@ namespace Inheritence
             Color = (Color)randomSelectionColor;
             Size = new Size(randomLength, randomWidth, randomHeight);
 
-         }
-        public Vehicle (Brand brand, Color color)
+        }
+        public Vehicle(Brand brand, Color color)
         {
             Brand = brand;
             Color = color;
             Size = new Size(4.1, 2.3, 1.9);
         }
 
-        public Vehicle (Brand brand)
+        public Vehicle(Brand brand)
         {
             Brand = brand;
             Color = Color.Gold;
