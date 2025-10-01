@@ -3,6 +3,7 @@
     public class Car : Vehicle
     {
         public string Model { get; set; }
+
         public Car(Brand brand, string model, Color color)
         {
             Brand = brand;

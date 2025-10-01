@@ -61,6 +61,21 @@ while (true)
             circle.Print();
             break;
         case 9:
+            Shape[] shapes = new Shape[10];
+            
+            var myRand = new Random();
+            for (int i = 0 ; i<10; i++)
+            {
+                Shapes shape = (Shapes)myRand.Next(0, 2);
+                int randomSize = myRand.Next(1, 11);
+
+                shapes[i] = shape == Shapes.Square ? new Square(randomSize) :  new Circle(randomSize);
+            }
+
+            foreach (var shape in shapes)
+            {
+                shape.Print();
+            }
             break;
         case 10:
             break;
