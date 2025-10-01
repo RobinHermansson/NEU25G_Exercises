@@ -54,6 +54,11 @@ while (true)
             Console.WriteLine($"Circumference: {mySquare.Circumference:F2}");
             break;
         case 8:
+            var square = new Square(3.2);
+            square.Print();
+
+            var circle = new Circle(4.5);
+            circle.Print();
             break;
         case 9:
             break;
