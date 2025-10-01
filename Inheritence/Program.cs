@@ -48,6 +48,10 @@ while (true)
             Console.WriteLine($"Circumference: {myCircle.Circumference:F2}");
             break;
         case 7:
+            Square mySquare = new Square(5);
+            Console.WriteLine(mySquare);
+            Console.WriteLine($"Area: {mySquare.Area:F2}");
+            Console.WriteLine($"Circumference: {mySquare.Circumference:F2}");
             break;
         case 8:
             break;
