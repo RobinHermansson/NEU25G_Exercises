@@ -41,6 +41,12 @@ while (true)
         case 5:
             Console.WriteLine(new Car(Brand.Toyota, "Yaris", Color.White));
             break;
+         case 6:
+            Circle myCircle = new Circle(5);
+            Console.WriteLine(myCircle);
+            Console.WriteLine($"Area: {myCircle.Area:F2}");
+            Console.WriteLine($"Circumference: {myCircle.Circumference:F2}");
+            break;
         case 7:
             break;
         case 8:
