@@ -19,12 +19,16 @@ while (true)
     switch (selection)
     {
         case 1:
-            Func<string, string, string> delegateCombiner = FullNameCombiner;
+            FullNameCombiner delegateCombiner = FullNameCombinerMethod;
 
             var fullName = delegateCombiner.Invoke("Robin", "Hermansson");
             Console.WriteLine(fullName);
             break;
         case 2:
+            Func<string, string, string> genericDelegate = FullNameCombinerMethod;
+            var genericFullName = genericDelegate.Invoke("Robin", "Hermansson");
+            Console.WriteLine(genericFullName);
+
             break;
         case 3:
             break;
@@ -46,8 +50,9 @@ while (true)
 
 
 
-
-static string FullNameCombiner(string firstName,string lastName) 
+static string FullNameCombinerMethod(string firstName, string lastName)
 {
     return $"{firstName} {lastName}";
 }
+
+delegate string FullNameCombiner(string s1, string s2);
