@@ -62,6 +62,19 @@ internal class Program
                     });
                     break;
                 case 7:
+                    string[] cities = { "Gothenburg", "Paris", "Cape town", "Las Vegas" };
+                    PrintArrayToConsole(cities, (s1) =>
+                    {
+                        return s1.ToUpper();
+                    });
+                    PrintArrayToConsole(cities, (s1) => 
+                    {
+                        return s1.Substring(0,3);
+                    });
+                    PrintArrayToConsole(cities, (s1) =>
+                    {
+                        return s1.Length.ToString();
+                    });
                     break;
                 case 8:
                     break;
@@ -87,6 +100,14 @@ internal class Program
            Console.WriteLine(myFunc.Invoke("Kalle", "Larsson"));
            Console.WriteLine(myFunc.Invoke("Fredrik", "Isaksson"));
            Console.WriteLine(myFunc.Invoke("Peter", "Kvist"));
+        }
+
+        static void PrintArrayToConsole(string[] stringArray, Func<string, string> modifier)
+        {
+            foreach (string singleString in stringArray)
+            {
+                Console.WriteLine(modifier.Invoke(singleString));
+            }
         }
     }
 }
