@@ -77,6 +77,34 @@ internal class Program
                     });
                     break;
                 case 8:
+                    int[] numbersArray = { -20, 1, 2, 3, -99, 10, 11, 15, 29, 39, 120, 60, 4 };
+                    Console.WriteLine("All positive numbers: ");
+                    NumberArrayPrinter(numbersArray, x =>
+                    {
+                        if (x > 0)
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
+                    Console.WriteLine("All numbers between 10 and 20: ");
+                    NumberArrayPrinter(numbersArray, x =>
+                    {
+                        if (x >= 10 && x <= 20)
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
+                    Console.WriteLine("\nAll even numbers: ");
+                    NumberArrayPrinter(numbersArray, x =>
+                    {
+                        if (x % 2 == 0)
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
                     break;
                 case 9:
                     break;
@@ -107,6 +135,17 @@ internal class Program
             foreach (string singleString in stringArray)
             {
                 Console.WriteLine(modifier.Invoke(singleString));
+            }
+        }
+
+        static void NumberArrayPrinter(int[] intArray, Func<int, bool> finder)
+        {
+            foreach (var number in intArray)
+            {
+                if (finder.Invoke(number))
+                {
+                    Console.WriteLine(number);
+                }
             }
         }
     }
