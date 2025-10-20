@@ -19,7 +19,10 @@ while (true)
     switch (selection)
     {
         case 1:
-            FullNameCombiner();
+            Func<string, string, string> delegateCombiner = FullNameCombiner;
+
+            var fullName = delegateCombiner.Invoke("Robin", "Hermansson");
+            Console.WriteLine(fullName);
             break;
         case 2:
             break;
@@ -43,7 +46,8 @@ while (true)
 
 
 
-static string FullNameCombiner() 
+
+static string FullNameCombiner(string firstName,string lastName) 
 {
-    return "";
+    return $"{firstName} {lastName}";
 }
