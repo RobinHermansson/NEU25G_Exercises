@@ -107,6 +107,49 @@ internal class Program
                     });
                     break;
                 case 9:
+                    int[] numbersArrayTwo = { -20, 1, 2, 3, -99, 10, 11, 15, 29, 39, 120, 60, 4 };
+                    Console.WriteLine("All positive numbers: ");
+                    int[] foundNumbers = NumberArrayReturnFound(numbersArrayTwo, x =>
+                    {
+                        if (x > 0)
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
+                    Console.WriteLine("All numbers between 10 and 20: ");
+                    int[] foundNumbers2 = NumberArrayReturnFound(numbersArrayTwo, x =>
+                    {
+                        if (x >= 10 && x <= 20)
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
+                    Console.WriteLine("\nAll even numbers: ");
+                    int[] foundNumbers3 = NumberArrayReturnFound(numbersArrayTwo, x =>
+                    {
+                        if (x % 2 == 0)
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
+                    Console.WriteLine($"Found numbers 1:");
+                    foreach (var integer in foundNumbers)
+                    {
+                        Console.WriteLine(integer);
+                    }
+                    Console.WriteLine($"\nFound numbers 2:");
+                    foreach (var integer2 in foundNumbers2)
+                    {
+                        Console.WriteLine(integer2);
+                    }
+                    Console.WriteLine($"\nFound numbers 3:");
+                    foreach (var integer3 in foundNumbers3)
+                    {
+                        Console.WriteLine(integer3);
+                    }
                     break;
                 default:
                     Console.WriteLine("Invalid selection. Try again.");
@@ -148,6 +191,19 @@ internal class Program
                 }
             }
         }
+        static int[] NumberArrayReturnFound(int[] intArray, Func<int, bool> finder)
+        {
+            List<int> tempList = new List<int>();
+            foreach (var number in intArray)
+            {
+                if (finder.Invoke(number))
+                {
+                    tempList.Add(number);
+                }
+            }
+            return tempList.ToArray();
+        }
+
     }
 }
 public delegate string FullNameCombiner<T1, T2>(T1 s, T2 s2);
