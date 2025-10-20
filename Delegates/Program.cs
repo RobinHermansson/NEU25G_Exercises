@@ -1,4 +1,7 @@
 ﻿
+using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.Arm;
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -23,10 +26,10 @@ internal class Program
             switch (selection)
             {
                 case 1:
-                   // FullNameCombiner<string, string> delegateCombiner = FullNameCombinerMethod;
+                    FullNameCombiner<string, string> delegateCombiner = FullNameCombinerMethod;
 
-                    //var fullName = delegateCombiner.Invoke("Robin", "Hermansson");
-                    //Console.WriteLine(fullName);
+                    var fullName = delegateCombiner.Invoke("Robin", "Hermansson");
+                    Console.WriteLine(fullName);
                     break;
                 case 2:
                     Func<string, string, string> genericDelegate = FullNameCombinerMethod;
@@ -37,8 +40,26 @@ internal class Program
                     MethodWithFunc(OtherFullNameCombinerMethod);
                     break;
                 case 4:
+
+                    Action<int, int> genericDelegatePrintSum = (x, y) =>
+                    {
+                         Console.WriteLine($"{x} + {y} = {x + y}");
+                    };
+
+                    genericDelegatePrintSum.Invoke(2, 3);
+                    break;
+                case 5:
+                    Func<int, int, string> genericDelegateSum = (x, y) =>
+                    {
+                        return $"{x} + {y} = {x + y}";
+                    };
+                    Console.WriteLine(genericDelegateSum.Invoke(5,5));
                     break;
                 case 6:
+                    MethodWithFunc((s, s2) =>
+                    {
+                        return $"firstName has {s.Length} letters\nlastName has {s2.Length} letters.";
+                    });
                     break;
                 case 7:
                     break;
@@ -69,6 +90,6 @@ internal class Program
         }
     }
 }
-public delegate string OtherFullNameCombiner<T1, T2>(T1 s, T2 s2);
+public delegate string FullNameCombiner<T1, T2>(T1 s, T2 s2);
 
 
