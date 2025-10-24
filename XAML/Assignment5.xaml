@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="Assignment5" Height="450" Width="800">
     <Grid>
+        <StackPanel HorizontalAlignment="Center"  VerticalAlignment="Center" Width="150">
+            <Label Content="Firstname:" HorizontalAlignment="Left"/>
+            <TextBox VerticalAlignment="Center"/>
+            <Label Content="Lastname:" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+            <TextBox VerticalAlignment="Center" />
+            <Button Content="OK" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 30 0 0" Padding="20 0"/>
+        </StackPanel>
         
     </Grid>
 </Window>
