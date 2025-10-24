@@ -19,5 +19,12 @@ namespace XAML
             assignment1.Show();
 
         }
+        private void Assignment2Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            Assignment2 assignment2 = new Assignment2();
+            assignment2.Show();
+
+        }
     }
 }
