@@ -63,6 +63,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Assignment3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assignment4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assignment5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assignment6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assignment7.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assignment8.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +100,24 @@
     </Compile>
     <Compile Include="Assignment2.xaml.cs">
       <DependentUpon>Assignment2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assignment3.xaml.cs">
+      <DependentUpon>Assignment3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assignment4.xaml.cs">
+      <DependentUpon>Assignment4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assignment5.xaml.cs">
+      <DependentUpon>Assignment5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assignment6.xaml.cs">
+      <DependentUpon>Assignment6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assignment7.xaml.cs">
+      <DependentUpon>Assignment7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assignment8.xaml.cs">
+      <DependentUpon>Assignment8.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
