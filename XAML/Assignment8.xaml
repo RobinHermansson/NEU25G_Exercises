@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XAML"
         mc:Ignorable="d"
-        Title="Assignment8" Height="450" Width="800">
+        Title="Assignment8" Height="450" Width="450">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="150">
+            <Label Content="Firstname:" HorizontalAlignment="Left"/>
+            <TextBox VerticalAlignment="Center" Text="Johan"/>
+            <Label Content="Lastname:" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+            <TextBox VerticalAlignment="Center" Text="Svensson" />
+            <Label Content="Email:" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+            <TextBox VerticalAlignment="Center" Text="johan@gmail.com" />
+            <Button Content="OK" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 30 0 0" Padding="20 0"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label>Students:</Label>
+            <ListBox MinWidth="200" MinHeight="200">
+                <ListBoxItem>
+                    Kalle Andersson
+                </ListBoxItem>
+                <ListBoxItem>
+                    Anders Karlsson
+                </ListBoxItem>
+                <ListBoxItem>
+                    Camilla Johansson
+                </ListBoxItem>
+                <ListBoxItem>
+                    Johan Svensson
+                </ListBoxItem>
+                <ListBoxItem>
+                    Mia Karlsson
+                </ListBoxItem>
+            </ListBox>
+        </StackPanel>
         
     </Grid>
 </Window>
