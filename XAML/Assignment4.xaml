@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="Assignment4" Height="450" Width="800">
     <Grid>
-        
+       <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="Play" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5 0"/>
+            <Button Content="Options" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5 0"/>
+            <Button Content="Quit" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5 0"/>
+        </StackPanel> 
     </Grid>
 </Window>
