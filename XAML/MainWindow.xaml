@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XAML"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300">
+        Title="MainWindow" Height="550" Width="400">
     <Grid ShowGridLines="True">
         <Label Content="Launch Assignments" HorizontalAlignment="Center"/>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
             <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 1:</Label> 
-            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment1Button_Click"/>
             <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 2:</Label> 
             <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 3:</Label> 
