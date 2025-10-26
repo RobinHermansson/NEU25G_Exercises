@@ -19,9 +19,33 @@ namespace WPF_Controls
     /// </summary>
     public partial class Assignment2 : Window
     {
+        private int initialValue = 0;
         public Assignment2()
         {
             InitializeComponent();
+        }
+
+        private void ButtonPlus_Click(object sender, RoutedEventArgs e)
+        {
+            var currentValueCounter = int.Parse(CounterLabel.Content.ToString());
+
+            if (currentValueCounter < 9)
+            {
+                currentValueCounter++;
+                CounterLabel.Content = currentValueCounter;
+            }
+        }
+
+        private void ButtonMinus_Click(object sender, RoutedEventArgs e)
+        {
+            var currentValueCounter = int.Parse(CounterLabel.Content.ToString());
+
+            if (currentValueCounter > 0)
+            {
+                currentValueCounter--;
+                CounterLabel.Content = currentValueCounter;
+            }
+
         }
     }
 }

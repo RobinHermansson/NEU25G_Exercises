@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="Assignment2" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" >
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Counter: "/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="CounterLabel" Content="0"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button Content="+" Click="ButtonPlus_Click" Margin="0 0 50 0" Padding="20"/>
+            <Button Content="-" Click="ButtonMinus_Click" Margin="0 0 0 0" Padding="20"/>
+        </StackPanel>
         
     </Grid>
 </Window>
