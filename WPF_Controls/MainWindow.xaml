@@ -1,0 +1,45 @@
+﻿<Window x:Class="WPF_Controls.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Launch Assignments" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 1:</Label>
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment1Button_Click"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 2:</Label>
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment2Button_Click"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 3:</Label>
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment3Button_Click" />
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 4:</Label>
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment4Button_Click" />
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 5:</Label>
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment5Button_Click"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 6:</Label>
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment6Button_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" >
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 7:</Label> 
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment7Button_Click"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 8:</Label> 
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment8Button_Click"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 9:</Label> 
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment9Button_Click"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 10:</Label> 
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment10Button_Click"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 11:</Label> 
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment11Button_Click"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Assignment 12:</Label> 
+            <Button Content="Launch" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Assignment12Button_Click"/>
+            
+        </StackPanel>
+    </Grid>    
+</Window>
