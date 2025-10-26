@@ -45,7 +45,6 @@ namespace WPF_Controls
                 currentValueCounter--;
                 CounterLabel.Content = currentValueCounter;
             }
-
         }
     }
 }
