@@ -19,9 +19,17 @@ namespace WPF_Controls
     /// </summary>
     public partial class Assignment1 : Window
     {
+
+        private int _timesClicked = 0;
         public Assignment1()
         {
             InitializeComponent();
+        }
+
+        private void ClickerButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClickerButton.Content = $"Clicked {_timesClicked++} times!";
+
         }
     }
 }

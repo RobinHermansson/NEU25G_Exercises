@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Assignment1" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Label Content="Click the below button and it will count how many times you've clicked it."/>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="ClickerButton" Content="Click me!!" Click="ClickerButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
