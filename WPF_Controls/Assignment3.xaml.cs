@@ -48,7 +48,7 @@ namespace WPF_Controls
             }
         }
 
-        private void Slider_Drag(object sender, RoutedEventArgs e)
+        /*private void Slider_Drag(object sender, RoutedEventArgs e)
         {
             var currentValueCounter = int.Parse(CounterLabel.Content.ToString());
 
@@ -58,6 +58,6 @@ namespace WPF_Controls
                 CounterLabel.Content = currentValueCounter;
                 Slider.Value = currentValueCounter;
             }
-        }
+        }*/
     }
 }

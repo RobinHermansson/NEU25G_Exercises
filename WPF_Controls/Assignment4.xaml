@@ -5,8 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Controls"
         mc:Ignorable="d"
-        Title="Assignment4" Height="450" Width="800">
+        Title="Assignment4" Height="200" Width="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical">
+            <Label HorizontalAlignment="Left"  
+                   VerticalAlignment="Top" >Y-Pos</Label>
+            <Slider x:Name="ySlider" 
+                    Orientation="Vertical"
+                    HorizontalAlignment="Left"
+                    Value="0"
+                    Maximum="100"
+                    TickFrequency="5"
+                    TickPlacement="BottomRight"
+                    Height="100" Width="50"
+                    ValueChanged="Slider_ValueChanged"
+                    Thumb.DragStarted="Slider_DragStarted"
+                    Thumb.DragCompleted="Slider_DragCompleted"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Orientation="Horizontal">
+            <Label Grid.ColumnSpan="2">XPos</Label>
+            <Slider x:Name="xSlider" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" 
+                    Orientation="Horizontal" 
+                    Value="0"
+                    Maximum="100" 
+                    TickFrequency="5" 
+                    TickPlacement="TopLeft"
+                    Width="100"
+                    ValueChanged="Slider_ValueChanged"
+                    Thumb.DragStarted="Slider_DragStarted"
+                    Thumb.DragCompleted="Slider_DragCompleted"/>
+        </StackPanel>
+        <Label x:Name="movingLabel" Grid.Column="1" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="10,10,0,0">* X:5 Y:10
+        </Label>
     </Grid>
 </Window>
