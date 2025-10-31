@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Controls"
         mc:Ignorable="d"
-        Title="Assignment5" Height="450" Width="800">
+        Title="Assignment5" Height="300" Width="350">
     <Grid>
+
+        <Slider x:Name="labelMoverSlider"
+                Margin="14,164,14,46" Thumb.DragStarted="labelMoverSlider_DragStarted"  Thumb.DragCompleted="labelMoverSlider_DragCompleted" ValueChanged="labelMoverSlider_ValueChanged"/>
+        <Label x:Name="movingLabel" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top"
+               Margin="0 0 0 0"
+               Content="*"/>
+
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Bottom" 
+                    Height="60" 
+                    Width="Auto"
+        >
+            <StackPanel Margin="10 10 10 0">
+                <Label x:Name="xLabel" 
+                       HorizontalAlignment="Left" 
+                       Content="X: 0"/>
+                <CheckBox x:Name="xLock" 
+                          IsChecked="false">Lock X</CheckBox>
+            </StackPanel>
+            <StackPanel Margin="10 10 10 0">
+
+                <Label x:Name="yLabel" 
+                       HorizontalAlignment="Left" 
+                       Content="Y: 0"/>
+                <CheckBox x:Name="yLock" 
+                          IsChecked="false">Lock Y</CheckBox>
+            </StackPanel>
+        </StackPanel>
         
     </Grid>
 </Window>
